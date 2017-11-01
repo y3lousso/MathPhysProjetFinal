@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace MathsPhys
 { 
-class Matrix3x3 : Matrix
+    public class Matrix3x3 : Matrix
     {
         public Matrix3x3()
             : base(3, 3)
@@ -59,5 +59,7 @@ class Matrix3x3 : Matrix
         {
             return new Matrix3x3(Multiply(m, scalar));
         }
-    }
+
+    } 
+
 }

@@ -57,7 +57,7 @@ namespace MathsPhys
         }
 
         public static Vector3 operator +(Vector3 v1, Vector3 v2)
-        {
+        {           
             return new Vector3(v1.x + v2.x, v1.y + v2.y, v1.z + v2.z);
         }
 
@@ -89,6 +89,18 @@ namespace MathsPhys
         public static bool operator !=(Vector3 v1, Vector3 v2)
         {
             return v1.x != v2.x || v1.y != v2.y || v1.z != v2.z;
+        }
+
+        // Cast from MathsPhys Vect3 to Unity Vect3 
+        public static implicit operator UnityEngine.Vector3(Vector3 vector)
+        {
+            return new UnityEngine.Vector3(vector.x, vector.y, vector.z);
+        }
+
+        // Cast from Unity Vect3 to MathsPhys Vect3
+        public static implicit operator Vector3(UnityEngine.Vector3 vector)
+        {
+            return new Vector3(vector.x, vector.y, vector.z);
         }
 
         public static Vector3 CrossProduct(Vector3 a, Vector3 b)

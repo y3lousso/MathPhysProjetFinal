@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace MathsPhys
 {
-    class Matrix
+    public class Matrix
     {
         public float[,] matrix;
         public int rows;
