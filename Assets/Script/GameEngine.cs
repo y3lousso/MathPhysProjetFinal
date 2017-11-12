@@ -30,13 +30,13 @@ namespace MathsPhys
 
 
             // Convert euler -> quat -> euler : OK
-            Vector3 testEulerAngle = new Vector3(30, 25, 66);
+          /*  Vector3 testEulerAngle = new Vector3(30, 25, 66);
             Debug.Log(testEulerAngle);
             Quaternion testQuat = new Quaternion();
             testQuat = MathsUtility.GetQuaternionFromEulerAngle(testEulerAngle.x, testEulerAngle.y, testEulerAngle.z);
             Debug.Log(testQuat);
             testEulerAngle = MathsUtility.GetEulerAngleFromQuaternion(testQuat);
-            Debug.Log(testEulerAngle);
+            Debug.Log(testEulerAngle);*/
 
 
         }
@@ -45,17 +45,13 @@ namespace MathsPhys
         void FixedUpdate()
         {
             // On fait tourner de manière random
-            Vector3 rotationRateEulerAngle = new Vector3(Random.RandomRange(-89f, 89f), Random.RandomRange(-89f, 89f), Random.RandomRange(-89f, 89f));
+            // Vector3 rotationRateEulerAngle = new Vector3(Random.RandomRange(-89f, 89f), Random.RandomRange(-89f, 89f), Random.RandomRange(-89f, 89f));
 
             // On update tous les objets suivant la procédure habituelle d'un moteur 
             foreach (BaseObject obj in objects)
             {
-                obj.rotationRate = rotationRateEulerAngle;
-                // Calculate new coordonate
-                obj.CalculateNextFramePositionOrientation(1f / nbFramePerSecond);
-                // Detect Colision
-
-                // Recalculate change direction if needed
+				obj.rotationRate = Vector3.NewZero ();
+				obj.UpdateVelocity ();
 
                 // Apply
                 obj.ApplyNextFramePositionOrientation();

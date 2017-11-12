@@ -20,17 +20,44 @@ namespace MathsPhys
         // pour tester
         public Vector3 rotationRate;
 
+		//forces 
+		public float masse = 1;
+		public bool UseGravity;
+		public List<Vector3> _forces = new List<Vector3>();
+
+		public float drag = 0.3f;
+		public float StaticDrag = 0.8f;
+
+
         // Use this for initialization
         void Start()
         {
-
+			if (masse == 0)
+				masse = 0.0001f;
         }
 
         // Update is called once per frame
-        void Update()
+		public void UpdateVelocity()
         {
+			if (UseGravity) {
+				AddForce (new Vector3(0, 1, 0) * -9.81f);
+			}
+			AddForce (velocity * (velocity.Size() > 0.1f ? -StaticDrag : -drag));
 
+			Vector3 sum = new Vector3(0, 0, 0);
+			foreach (Vector3 f in _forces) {
+				sum += f;
+			}
+			 
+			_forces.Clear ();
+
+			velocity += sum / masse;
+			CalculateNextFramePositionOrientation (Time.fixedDeltaTime);
         }
+
+		public void AddForce(Vector3 f) {
+			_forces.Add (f);
+		}
 
         public void CalculateNextFramePositionOrientation(float deltaTime)
         {
