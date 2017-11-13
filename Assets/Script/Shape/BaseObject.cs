@@ -20,13 +20,22 @@ namespace MathsPhys
         // pour tester
         public Vector3 rotationRate;
 
-		//forces 
-		public float masse = 1;
-		public bool UseGravity;
-		public List<Vector3> _forces = new List<Vector3>();
+        //forces 
+        public List<Vector3> _forces = new List<Vector3>();
+        public float masse = 1;
 
-		public float drag = 0.3f;
-		public float StaticDrag = 0.8f;
+        // if the base object is affected by gravity
+        public bool UseGravity;
+        // realistic value = 9.81 ; but it seems slow from afar
+        [Range(1, 100)]
+        public float TweekerGravity = 9.81f;
+        
+        // if the velocity goes under this limit, velocity approximated to 0
+        [Range(0.0001f, 1)]
+        public float VelocityLowLimit = 0.1f;
+
+        [Range(0,100)]
+		public float TweekerAirDrag = 1f;
 
 
         // Use this for initialization
@@ -37,40 +46,46 @@ namespace MathsPhys
         }
 
         // Update is called once per frame
-		public void UpdateVelocity()
+		public void UpdateVelocity(float deltaTime)
         {
 			if (UseGravity) {
-				AddForce (new Vector3(0, 1, 0) * -9.81f);
+				AddForce (new Vector3(0, -TweekerGravity * masse, 0));
 			}
-			AddForce (velocity * (velocity.Size() > 0.1f ? -StaticDrag : -drag));
+            if(velocity.Size() > VelocityLowLimit)
+            {
+                AddForce(-velocity * TweekerAirDrag);
+            }else
+            {
+                velocity = Vector3.NewZero();
+            }
 
-			Vector3 sum = new Vector3(0, 0, 0);
-			foreach (Vector3 f in _forces) {
+
+			Vector3 sum = Vector3.NewZero();
+            foreach (Vector3 f in _forces) {
 				sum += f;
 			}
 			 
 			_forces.Clear ();
-
-			velocity += sum / masse;
-			CalculateNextFramePositionOrientation (Time.fixedDeltaTime);
+            
+            velocity += sum * (deltaTime / masse);
+            //Debug.Log(gameObject.name + " : " + velocity);
+            CalculateNextFramePositionOrientation (deltaTime);
         }
 
 		public void AddForce(Vector3 f) {
 			_forces.Add (f);
 		}
 
-        public void CalculateNextFramePositionOrientation(float deltaTime)
+        private void CalculateNextFramePositionOrientation(float deltaTime)
         {
             // Calculate NextFramePosition
             nextFramePosition = currentPosition + velocity * deltaTime;
 
             // Calculate NextFrameOrientation
-            // pour tester
             nextFrameOrientation = currentOrientation + rotationRate * deltaTime;
-
         }
 
-        public void ApplyNextFramePositionOrientation()
+        public void ApplyPositionOrientation()
         {
             currentPosition = nextFramePosition;
             transform.position = new UnityEngine.Vector3(currentPosition.x, currentPosition.y, currentPosition.z);
@@ -79,18 +94,10 @@ namespace MathsPhys
             transform.rotation = MathsUtility.GetQuaternionFromEulerAngle(currentOrientation.x, currentOrientation.y, currentOrientation.z);
         }
 
-        public void ApplyRotationToTransform()
+        public void ChangeScaleToTransform(Vector3 newScale)
         {
-            Vector3 eulerAngles;
-            // eulerAngles = GetEulerAngleFromMatrice(baseObject.rotation);
-            //   baseObject.transform.rotation.SetEulerAngles(eulerAngles.x, eulerAngles.y, eulerAngles.z); 
-
-        }
-
-        public void ApplyScaleToTransform()
-        {
-            //baseObject.transform.localScale = baseObject.scale;
-
+            transform.localScale = newScale;
+            scale = newScale;
         }
 
         public Vector3 GetPositionFromEditor()

@@ -25,7 +25,7 @@ namespace MathsPhys
             {
                 obj.currentPosition = obj.GetPositionFromEditor();
                 obj.currentOrientation = MathsUtility.GetEulerAngleFromQuaternion(obj.GetOrientationFromEditor());
-                obj.velocity = new Vector3(Random.RandomRange(-1f,1f), Random.RandomRange(-1f, 1f), Random.RandomRange(-1f, 1f));
+                obj.velocity = new Vector3(0, 20, 40);
             }
 
 
@@ -51,10 +51,17 @@ namespace MathsPhys
             foreach (BaseObject obj in objects)
             {
 				obj.rotationRate = Vector3.NewZero ();
-				obj.UpdateVelocity ();
+				obj.UpdateVelocity (Time.fixedDeltaTime);                
+            }
+            // Detect collision
+            foreach (BaseObject obj in objects)
+            {
 
-                // Apply
-                obj.ApplyNextFramePositionOrientation();
+            }
+            // Apply new position
+            foreach (BaseObject obj in objects)
+            {
+                obj.ApplyPositionOrientation();
             }
         }
     }
