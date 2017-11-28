@@ -147,6 +147,11 @@ namespace MathsPhys
             return this;
         }
 
+		public float Magnitude()
+		{
+			return Mathf.Sqrt (x*x + y*y + z*z);
+		}
+
         public Vector3 Clone()
         {
             return new Vector3(this);
