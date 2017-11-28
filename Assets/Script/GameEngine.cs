@@ -10,15 +10,22 @@ namespace MathsPhys
 
         List<BaseObject> objects;
 
+		QuadTree quadTree;
+
         // Use this for initialization
         void Start()
         {
+			quadTree = GetComponent<QuadTree> ();
+
             // Init du FixedUpdate à nbFramePerSecond
             Time.fixedDeltaTime = 1f/ nbFramePerSecond;
 
             // On init
             objects = new List<BaseObject>();
             objects.AddRange(FindObjectsOfType<BaseObject>());
+
+			// Init collision manager
+			quadTree.Init (objects);
 
             // Pour tester
             foreach (BaseObject obj in objects)
@@ -54,10 +61,7 @@ namespace MathsPhys
 				obj.UpdateVelocity (Time.fixedDeltaTime);                
             }
             // Detect collision
-            foreach (BaseObject obj in objects)
-            {
-
-            }
+			quadTree.UpdateCollisions();
             // Apply new position
             foreach (BaseObject obj in objects)
             {
