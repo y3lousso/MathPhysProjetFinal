@@ -6,17 +6,23 @@ namespace MathsPhys
 {
     public class Sphere : BaseObject
     {
+        public float radius;
 
         // Use this for initialization
-        void Start()
+        public override void Init()
         {
+            base.Init();
 
-        }
+            if (GetComponent<MySphereCollider>() != null)
+            {
+                collider = GetComponent<MySphereCollider>();
+            }
+            else
+            {
+                collider = new MySphereCollider();
+            }
 
-        // Update is called once per frame
-        void Update()
-        {
-
+            collider.Init(this);
         }
     }
 }

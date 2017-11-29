@@ -6,29 +6,50 @@ namespace MathsPhys
 {
     public class GameEngine : MonoBehaviour
     {
+        public static GameEngine instance;
+
         int nbFramePerSecond = 60;
 
-        List<BaseObject> objects;
+        List<BaseObject> _objects;
 
-		QuadTree quadTree;
+        CollisionSystem collisionSystem;
+
+        private void Awake()
+        {
+            if(instance == null)
+            {
+                instance = this;
+            }
+            else
+            {
+                throw new System.Exception("Can't have multiple game engine instances.");
+            }
+        }
 
         // Use this for initialization
         void Start()
         {
-			quadTree = GetComponent<QuadTree> ();
-
             // Init du FixedUpdate à nbFramePerSecond
-            Time.fixedDeltaTime = 1f/ nbFramePerSecond;
+            Time.fixedDeltaTime = 1f / nbFramePerSecond;
 
-            // On init
-            objects = new List<BaseObject>();
-            objects.AddRange(FindObjectsOfType<BaseObject>());
+            // Get all object of the scene
+            _objects = new List<BaseObject>();
+            _objects.AddRange(FindObjectsOfType<BaseObject>());
 
-			// Init collision manager
-			quadTree.Init (objects);
+            // Create all systems
+            collisionSystem = new CollisionSystem();
+
+            // Init all systems
+            collisionSystem.StartSystem();
+            
+            // Init objects and their components
+            foreach (BaseObject obj in _objects)
+            {
+                obj.Init();
+            }
 
             // Pour tester
-            foreach (BaseObject obj in objects)
+            foreach (BaseObject obj in _objects)
             {
                 obj.currentPosition = obj.GetPositionFromEditor();
                 obj.currentOrientation = MathsUtility.GetEulerAngleFromQuaternion(obj.GetOrientationFromEditor());
@@ -55,18 +76,25 @@ namespace MathsPhys
             // Vector3 rotationRateEulerAngle = new Vector3(Random.RandomRange(-89f, 89f), Random.RandomRange(-89f, 89f), Random.RandomRange(-89f, 89f));
 
             // On update tous les objets suivant la procédure habituelle d'un moteur 
-            foreach (BaseObject obj in objects)
+            foreach (BaseObject obj in _objects)
             {
 				obj.rotationRate = Vector3.NewZero ();
 				obj.UpdateVelocity (Time.fixedDeltaTime);                
             }
+
             // Detect collision
-			quadTree.UpdateCollisions();
+            collisionSystem.UpdateSystem();
+
             // Apply new position
-            foreach (BaseObject obj in objects)
+            foreach (BaseObject obj in _objects)
             {
                 obj.ApplyPositionOrientation();
             }
+        }
+
+        public List<BaseObject> GetAllObjects()
+        {
+            return _objects;
         }
     }
 

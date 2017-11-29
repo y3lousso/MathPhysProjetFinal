@@ -25,22 +25,22 @@ namespace MathsPhys {
 		public QuadTree parent = null;
 		public QuadTree[] childrens;
 
-		public List<BaseObject> objects = new List<BaseObject>();
+		public List<BaseObject> _objects = new List<BaseObject>();
 
 		public void Init (List<BaseObject> o) {
-			for (int j = 0 ; j < o.Count ; j++) { 
+            for (int j = 0 ; j < o.Count ; j++) { 
 				if (o [j].nextFramePosition.x < position.x + size.x / 2 && o [j].nextFramePosition.x > position.x - size.x / 2 &&
 				    o [j].nextFramePosition.y < position.y + size.y / 2 && o [j].nextFramePosition.y > position.y - size.y / 2 &&
 				    o [j].nextFramePosition.z < position.z + size.z / 2 && o [j].nextFramePosition.z > position.z - size.z / 2) {
 
-					objects.Add (o[j]);
+                    _objects.Add (o[j]);
 				}
 			}
 		}
-
-		public void UpdateCollisions () {
+        
+		public void UpdateSpaceDistribution () {
 			// Create subdivisions if needed
-			if ((childrens == null || childrens.Length == 0) && objects.Count > nbMax) {
+			if ((childrens == null || childrens.Length == 0) && _objects.Count > nbMax) {
 				childrens = new QuadTree[8];
 
 				for (int i = 0 ; i < 8 ; i++) {
@@ -48,11 +48,11 @@ namespace MathsPhys {
 					childrens [i].parent = this;
 					childrens [i].position = position + size / 4 * cubeSubdiv [i];
 					childrens [i].size = size / 2;
-					childrens [i].Init (objects);
+					childrens [i].Init (_objects);
 				}
 			} 
 			// Destroy subdivision if not needed anymore
-			else if (childrens != null && childrens.Length > 0 && objects.Count < nbMin) {
+			else if (childrens != null && childrens.Length > 0 && _objects.Count < nbMin) {
 				for (int j = childrens.Length - 1; j >= 0; j--) { 
 					Destroy (childrens[j].gameObject);
 				}
@@ -63,28 +63,26 @@ namespace MathsPhys {
 			// Update Childrens
 			if (childrens != null && childrens.Length > 0) {
 				for (int i = 0; i < 8; i++) {
-					childrens [i].UpdateCollisions ();
+					childrens [i].UpdateSpaceDistribution();
 				}
 			} 
 			// Update objects collisions
 			else {
-				for (int j = objects.Count - 1; j >= 0; j--) {
-					for (int k = objects.Count - 1; k > j; k--) { 
-						// Collision entre objects[j] et objects[k] BITE
-					}
-				}
+                SpacePartition spacePartition = new SpacePartition();
+                spacePartition.GetObjects().AddRange(_objects);
+                CollisionSystem.instance.AddSpacePartition(spacePartition);
 			}
 
 			// Handle objects leaving quadtree
-			for (int j = objects.Count-1; j >= 0 ; j--) { 
-				if (objects [j].nextFramePosition.x > position.x + size.x / 2 || objects [j].nextFramePosition.x < position.x - size.x / 2 ||
-					objects [j].nextFramePosition.y > position.y + size.y / 2 || objects [j].nextFramePosition.y < position.y - size.y / 2 ||
-					objects [j].nextFramePosition.z > position.z + size.z / 2 || objects [j].nextFramePosition.z < position.z - size.z / 2) {
+			for (int j = _objects.Count-1; j >= 0 ; j--) { 
+				if (_objects[j].nextFramePosition.x > position.x + size.x / 2 || _objects[j].nextFramePosition.x < position.x - size.x / 2 ||
+                    _objects[j].nextFramePosition.y > position.y + size.y / 2 || _objects[j].nextFramePosition.y < position.y - size.y / 2 ||
+                    _objects[j].nextFramePosition.z > position.z + size.z / 2 || _objects[j].nextFramePosition.z < position.z - size.z / 2) {
 
 					if (parent != null)
-						parent.AssignObject (objects [j]);
-					
-					objects.RemoveAt (j);
+						parent.AssignObject (_objects[j]);
+
+                    _objects.RemoveAt (j);
 				}
 			}
 		}
@@ -98,7 +96,7 @@ namespace MathsPhys {
 					o.nextFramePosition.y < position.y + size.y / 2 && o.nextFramePosition.y > position.y - size.y / 2 &&
 					o.nextFramePosition.z < position.z + size.z / 2 && o.nextFramePosition.z > position.z - size.z / 2) {
 
-					objects.Add (o);
+                    _objects.Add (o);
 				}
 			} else {
 				for (int i = 0; i < 8; i++) {
@@ -118,4 +116,19 @@ namespace MathsPhys {
 			}
 		}
 	}
+
+    public class SpacePartition
+    {
+        private List<BaseObject> _object = new List<BaseObject>();
+
+        public List<BaseObject> GetObjects()
+        {
+            return _object;       
+        }
+
+        public BaseObject GetObjectByIndex(int index)
+        {
+            return _object[index];
+        }
+    }
 }

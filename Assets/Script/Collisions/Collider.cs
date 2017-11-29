@@ -3,14 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace MathsPhys {
-	public class collisionData {
-		public Vector3[] contactPoints;
+
+	public abstract class Collider : MonoBehaviour {
+
+        protected BaseObject baseObject;
+        public AABB aabb;
+
+        public virtual void Init(BaseObject obj)
+        {
+            baseObject = obj;
+            aabb = new AABB();
+        }
+
+        public abstract void CalculateAABB();
+		
 	}
 
-	public class Collider : MonoBehaviour {
-
-		public virtual collisionData isColliding(Collider col) {
-			return null;
-		}
-	}
 }

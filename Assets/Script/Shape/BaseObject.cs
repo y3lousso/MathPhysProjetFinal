@@ -6,19 +6,19 @@ namespace MathsPhys
 {
     public class BaseObject : MonoBehaviour
     {
-
         public Vector3 currentPosition;
         public Vector3 nextFramePosition;
 
         public Vector3 currentOrientation;
-        public Vector3 nextFrameOrientation;
-
-        public Vector3 scale;
+        public Vector3 nextFrameOrientation;      
 
         public Vector3 velocity;
 
         // pour tester
         public Vector3 rotationRate;
+
+        //Collision
+        protected Collider collider;
 
         //forces 
         public List<Vector3> _forces = new List<Vector3>();
@@ -39,7 +39,7 @@ namespace MathsPhys
 
 
         // Use this for initialization
-        void Start()
+        public virtual void Init()
         {
 			if (masse == 0)
 				masse = 0.0001f;
@@ -94,12 +94,6 @@ namespace MathsPhys
             transform.rotation = MathsUtility.GetQuaternionFromEulerAngle(currentOrientation.x, currentOrientation.y, currentOrientation.z);
         }
 
-        public void ChangeScaleToTransform(Vector3 newScale)
-        {
-            transform.localScale = newScale;
-            scale = newScale;
-        }
-
         public Vector3 GetPositionFromEditor()
         {
             return transform.position;
@@ -108,6 +102,11 @@ namespace MathsPhys
         public Quaternion GetOrientationFromEditor()
         {
             return transform.rotation;
+        }
+
+        public Collider GetCollider()
+        {
+            return collider;
         }
     }
 }

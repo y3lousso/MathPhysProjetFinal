@@ -6,17 +6,22 @@ namespace MathsPhys
 {
     public class Cube : BaseObject
     {
+        public Vector3 size;
 
         // Use this for initialization
-        void Start()
+        public override void Init()
         {
+            base.Init();
 
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
+            if(GetComponent<MyCubeCollider>() != null)
+            {
+                collider = GetComponent<MyCubeCollider>();                
+            }
+            else
+            {
+                collider = new MyCubeCollider();
+            }
+            collider.Init((BaseObject)this);
         }
     }
 }
