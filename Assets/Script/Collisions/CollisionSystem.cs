@@ -42,17 +42,19 @@ namespace MathsPhys
             {               
                 foreach (BaseObject baseObject in spacePartition.GetObjects())
                 {
-                    baseObject.GetCollider().CalculateAABB();
-                   // Debug.Log(baseObject.GetCollider().aabb.maxPosX);
+                    //if (baseObject.rotationRate != Vector3.Zero)
+                    //{
+                        baseObject.GetCollider().CalculateAABB();                        
+                    //}
                 }
                 for (int i = 0; i < spacePartition.GetObjects().Count-1; i++)
                 {
                     for (int j = 1; j < spacePartition.GetObjects().Count; j++)
                     {
                         if(ObjectOverlapAABB(spacePartition.GetObjectByIndex(i).GetCollider().aabb, spacePartition.GetObjectByIndex(j).GetCollider().aabb))
-                        {
-                            //Debug.Log("AABB overlap detected");
-                            // DO heavy maths ..
+                        {                          
+                            Debug.Log("AABB overlap detected");
+                            
                         }
                     }
                 }
@@ -74,6 +76,7 @@ namespace MathsPhys
             bool overlapX = aabb1.minPosX < aabb2.maxPosX && aabb1.maxPosX > aabb2.minPosX ? true : false;
             bool overlapY = aabb1.minPosY < aabb2.maxPosY && aabb1.maxPosY > aabb2.minPosY ? true : false; 
             bool overlapZ = aabb1.minPosZ < aabb2.maxPosZ && aabb1.maxPosZ > aabb2.minPosZ ? true : false;
+            Debug.Log("Overlap" + overlapX + "  " + overlapY + "  " + overlapZ);
             return overlapX && overlapY && overlapZ;
         }
     }

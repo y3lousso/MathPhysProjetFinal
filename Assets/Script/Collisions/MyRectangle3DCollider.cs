@@ -4,19 +4,20 @@ using UnityEngine;
 
 namespace MathsPhys
 {
-    public class MyCubeCollider : Collider
+    public class MyRectangle3DCollider : Collider
     {
 
         // Use this for initialization
         public override void Init(BaseObject obj)
         {
             base.Init(obj);
-
+            CalculateAABB();
         }
 
         public override void CalculateAABB()
         {
-            aabb.Calculate(baseObject.currentPosition, ((Cube)baseObject).size.x/2, ((Cube)baseObject).size.y/2, ((Cube)baseObject).size.z/2);
+            aabb.Calculate(((Rectangle3D)baseObject));
+           // Debug.Log(baseObject.name + "  aabb updated");
         }
     }
 }

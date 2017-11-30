@@ -51,22 +51,22 @@ namespace MathsPhys
             // Pour tester
             foreach (BaseObject obj in _objects)
             {
-                obj.currentPosition = obj.GetPositionFromEditor();
-                obj.currentOrientation = MathsUtility.GetEulerAngleFromQuaternion(obj.GetOrientationFromEditor());
-                obj.velocity = new Vector3(0, 20, 40);
+                obj.SetPositionFromEditor();
+                obj.SetOrientationFromEditor();
+                obj.SetSizeFromEditor();
+                //obj.velocity = new Vector3(0, 20, 40);
+                
             }
-
+            _objects[0].rotationRate = new Vector3(0f, 0, 20);
 
             // Convert euler -> quat -> euler : OK
-          /*  Vector3 testEulerAngle = new Vector3(30, 25, 66);
-            Debug.Log(testEulerAngle);
-            Quaternion testQuat = new Quaternion();
-            testQuat = MathsUtility.GetQuaternionFromEulerAngle(testEulerAngle.x, testEulerAngle.y, testEulerAngle.z);
-            Debug.Log(testQuat);
-            testEulerAngle = MathsUtility.GetEulerAngleFromQuaternion(testQuat);
-            Debug.Log(testEulerAngle);*/
-
-
+            /*  Vector3 testEulerAngle = new Vector3(30, 25, 66);
+              Debug.Log(testEulerAngle);
+              Quaternion testQuat = new Quaternion();
+              testQuat = MathsUtility.GetQuaternionFromEulerAngle(testEulerAngle.x, testEulerAngle.y, testEulerAngle.z);
+              Debug.Log(testQuat);
+              testEulerAngle = MathsUtility.GetEulerAngleFromQuaternion(testQuat);
+              Debug.Log(testEulerAngle);*/
         }
 
         // Update is called once per frame
@@ -77,8 +77,7 @@ namespace MathsPhys
 
             // On update tous les objets suivant la procédure habituelle d'un moteur 
             foreach (BaseObject obj in _objects)
-            {
-				obj.rotationRate = Vector3.NewZero ();
+            {				
 				obj.UpdateVelocity (Time.fixedDeltaTime);                
             }
 

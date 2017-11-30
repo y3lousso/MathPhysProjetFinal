@@ -82,7 +82,7 @@ namespace MathsPhys
             nextFramePosition = currentPosition + velocity * deltaTime;
 
             // Calculate NextFrameOrientation
-            nextFrameOrientation = currentOrientation + rotationRate * deltaTime;
+            nextFrameOrientation = (currentOrientation + rotationRate * deltaTime);    
         }
 
         public void ApplyPositionOrientation()
@@ -94,15 +94,22 @@ namespace MathsPhys
             transform.rotation = MathsUtility.GetQuaternionFromEulerAngle(currentOrientation.x, currentOrientation.y, currentOrientation.z);
         }
 
-        public Vector3 GetPositionFromEditor()
+        public void SetPositionFromEditor()
         {
-            return transform.position;
+            currentPosition = transform.position;
         }
 
-        public Quaternion GetOrientationFromEditor()
+        public void SetOrientationFromEditor()
         {
-            return transform.rotation;
+            //Debug.Log("Correct result E : " + transform.eulerAngles);
+            //Debug.Log("Correct result Q: " + transform.rotation);
+            currentOrientation = MathsUtility.GetEulerAngleFromQuaternion(transform.rotation);
+           // Debug.Log("Obtained result E->Q: " + (MathsUtility.GetQuaternionFromEulerAngle(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z)));
+            //Debug.Log("Obtained result Q->E: " + currentOrientation);
+
         }
+
+        public virtual void SetSizeFromEditor() { }
 
         public Collider GetCollider()
         {

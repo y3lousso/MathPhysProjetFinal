@@ -4,31 +4,30 @@ using UnityEngine;
 
 namespace MathsPhys
 {
-    public class Sphere : BaseObject
+    public class Rectangle3D : BaseObject
     {
-        public float radius;
+        public Vector3 size;
 
         // Use this for initialization
         public override void Init()
         {
             base.Init();
 
-            if (GetComponent<MySphereCollider>() != null)
+            if(GetComponent<MyRectangle3DCollider>() != null)
             {
-                collider = GetComponent<MySphereCollider>();
+                collider = GetComponent<MyRectangle3DCollider>();                
             }
             else
             {
-                collider = new MySphereCollider();
+                collider = new MyRectangle3DCollider();
             }
-            collider.Init(this);
+            collider.Init((BaseObject)this);
         }
 
         public override void SetSizeFromEditor()
         {
             base.SetSizeFromEditor();
-            radius = transform.localScale.x;
+            size = transform.localScale;
         }
-
     }
 }
