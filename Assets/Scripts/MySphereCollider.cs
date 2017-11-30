@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class MySphereCollider : MyCollider {
 
-	public Vector3 center;
+	public Vector3 localCenter;
 	public float radius = 1f;
 
 	public override CollisionData isColliding (MySphereCollider c) {
-		Vector3 dist = (c.transform.position + c.center) - (transform.position + center);
+		Vector3 dist = (c.transform.position + c.localCenter) - (transform.position + localCenter);
 
 		if (dist.magnitude < radius + c.radius) {
 			CollisionData cd = new CollisionData();
@@ -21,11 +21,11 @@ public class MySphereCollider : MyCollider {
 	}
 
 	public override CollisionData isColliding (MyAABBCollider c) {
-		Vector3 closestPoint = center - c.center;
+		Vector3 closestPoint = localCenter - c.localCenter;
 		closestPoint.Normalize ();
 		closestPoint *= radius;
 
-		Vector3 AABBCenter = c.transform.position + c.center;
+		Vector3 AABBCenter = c.transform.position + c.localCenter;
 
 		bool overLapX = closestPoint.x > AABBCenter.x - c.size.x && closestPoint.x < AABBCenter.x + c.size.x;
 		bool overLapY = closestPoint.y > AABBCenter.y - c.size.y && closestPoint.y < AABBCenter.y + c.size.y;
@@ -34,9 +34,9 @@ public class MySphereCollider : MyCollider {
 		if (overLapX && overLapY && overLapZ) {
 			CollisionData cd = new CollisionData();
 
-			cd.contactPoint = (c.center - center) / 2;
-
-			return cd;
+			cd.contactPoint = (c.localCenter - localCenter) / 2;
+            Debug.Log("localCenter : " + localCenter);
+            return cd;
 		}
 		return null;
 	}
@@ -47,6 +47,6 @@ public class MySphereCollider : MyCollider {
 	void OnDrawGizmos() {
 		Gizmos.color = new Color (0f, 1f, 0f, 1f);
 
-		Gizmos.DrawWireSphere (transform.position + center, radius);
+		Gizmos.DrawWireSphere (transform.position + localCenter, radius);       
 	}
 }

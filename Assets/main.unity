@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -156,8 +156,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   size: {x: 3, y: 3, z: 3}
+  aabbCalculatedRotation: {x: 0, y: 0, z: 0}
 --- !u!114 &5470946
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -262,8 +263,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   size: {x: 3, y: 3, z: 3}
+  aabbCalculatedRotation: {x: 0, y: 0, z: 0}
 --- !u!114 &14316955
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -355,8 +357,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   size: {x: 3, y: 3, z: 3}
+  aabbCalculatedRotation: {x: 0, y: 0, z: 0}
 --- !u!114 &139400701
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -474,8 +477,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   size: {x: 3, y: 3, z: 3}
+  aabbCalculatedRotation: {x: 0, y: 0, z: 0}
 --- !u!114 &227037937
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -562,9 +566,10 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 282660372}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.9299998, y: 9.298313, z: 2.3167415}
+  m_LocalPosition: {x: 46.18, y: 9.298313, z: 2.3167415}
   m_LocalScale: {x: 3, y: 3, z: 3}
-  m_Children: []
+  m_Children:
+  - {fileID: 338857653}
   m_Father: {fileID: 366967346}
   m_RootOrder: 35
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -580,8 +585,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   size: {x: 3, y: 3, z: 3}
+  aabbCalculatedRotation: {x: 0, y: 0, z: 0}
 --- !u!114 &282660375
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -673,8 +679,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   size: {x: 3, y: 3, z: 3}
+  aabbCalculatedRotation: {x: 0, y: 0, z: 0}
 --- !u!114 &295877084
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -779,8 +786,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   size: {x: 3, y: 3, z: 3}
+  aabbCalculatedRotation: {x: 0, y: 0, z: 0}
 --- !u!114 &298203734
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -898,8 +906,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   size: {x: 3, y: 3, z: 3}
+  aabbCalculatedRotation: {x: 0, y: 0, z: 0}
 --- !u!114 &325897348
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1004,8 +1013,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   size: {x: 3, y: 3, z: 3}
+  aabbCalculatedRotation: {x: 0, y: 0, z: 0}
 --- !u!114 &326656038
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1110,8 +1120,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   size: {x: 3, y: 3, z: 3}
+  aabbCalculatedRotation: {x: 0, y: 0, z: 0}
 --- !u!114 &336406087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1172,6 +1183,90 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 336406084}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &338857652
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 338857653}
+  - component: {fileID: 338857656}
+  - component: {fileID: 338857655}
+  - component: {fileID: 338857654}
+  m_Layer: 0
+  m_Name: Cube (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &338857653
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 338857652}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_Children: []
+  m_Father: {fileID: 282660373}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &338857654
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 338857652}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!65 &338857655
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 338857652}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!33 &338857656
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 338857652}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &348325397
 GameObject:
   m_ObjectHideFlags: 0
@@ -1216,8 +1311,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   size: {x: 3, y: 3, z: 3}
+  aabbCalculatedRotation: {x: 0, y: 0, z: 0}
 --- !u!114 &348325400
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1414,8 +1510,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   size: {x: 3, y: 3, z: 3}
+  aabbCalculatedRotation: {x: 0, y: 0, z: 0}
 --- !u!114 &367198231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1507,8 +1604,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   size: {x: 3, y: 3, z: 3}
+  aabbCalculatedRotation: {x: 0, y: 0, z: 0}
 --- !u!114 &419089991
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1626,8 +1724,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   size: {x: 3, y: 3, z: 3}
+  aabbCalculatedRotation: {x: 0, y: 0, z: 0}
 --- !u!114 &476161357
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1732,8 +1831,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   size: {x: 3, y: 3, z: 3}
+  aabbCalculatedRotation: {x: 0, y: 0, z: 0}
 --- !u!114 &545396094
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1838,8 +1938,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   size: {x: 3, y: 3, z: 3}
+  aabbCalculatedRotation: {x: 0, y: 0, z: 0}
 --- !u!114 &561014480
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1944,8 +2045,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   size: {x: 3, y: 3, z: 3}
+  aabbCalculatedRotation: {x: 0, y: 0, z: 0}
 --- !u!114 &593500509
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2050,8 +2152,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   size: {x: 3, y: 3, z: 3}
+  aabbCalculatedRotation: {x: 0, y: 0, z: 0}
 --- !u!114 &615224953
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2156,8 +2259,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   size: {x: 3, y: 3, z: 3}
+  aabbCalculatedRotation: {x: 0, y: 0, z: 0}
 --- !u!114 &615692350
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2262,8 +2366,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   size: {x: 3, y: 3, z: 3}
+  aabbCalculatedRotation: {x: 0, y: 0, z: 0}
 --- !u!114 &672860848
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2368,8 +2473,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   size: {x: 3, y: 3, z: 3}
+  aabbCalculatedRotation: {x: 0, y: 0, z: 0}
 --- !u!114 &744889940
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2461,8 +2567,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   size: {x: 3, y: 3, z: 3}
+  aabbCalculatedRotation: {x: 0, y: 0, z: 0}
 --- !u!114 &765962096
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2567,8 +2674,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   size: {x: 3, y: 3, z: 3}
+  aabbCalculatedRotation: {x: 0, y: 0, z: 0}
 --- !u!114 &769159530
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2686,8 +2794,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   size: {x: 3, y: 3, z: 3}
+  aabbCalculatedRotation: {x: 0, y: 0, z: 0}
 --- !u!114 &773265571
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2779,8 +2888,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   size: {x: 3, y: 3, z: 3}
+  aabbCalculatedRotation: {x: 0, y: 0, z: 0}
 --- !u!114 &778074164
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2848,7 +2958,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 778074162}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.0670333, y: 5.2983127, z: 2.3167415}
+  m_LocalPosition: {x: -1.0670333, y: 5.3, z: 2.3167415}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 366967346}
@@ -2898,8 +3008,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   size: {x: 3, y: 3, z: 3}
+  aabbCalculatedRotation: {x: 0, y: 0, z: 0}
 --- !u!114 &823681251
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3004,8 +3115,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   size: {x: 3, y: 3, z: 3}
+  aabbCalculatedRotation: {x: 0, y: 0, z: 0}
 --- !u!114 &847620725
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3110,8 +3222,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   size: {x: 3, y: 3, z: 3}
+  aabbCalculatedRotation: {x: 0, y: 0, z: 0}
 --- !u!114 &860912624
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3216,8 +3329,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   size: {x: 3, y: 3, z: 3}
+  aabbCalculatedRotation: {x: 0, y: 0, z: 0}
 --- !u!114 &948376184
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3309,8 +3423,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   size: {x: 3, y: 3, z: 3}
+  aabbCalculatedRotation: {x: 0, y: 0, z: 0}
 --- !u!114 &953046932
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3415,8 +3530,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   size: {x: 3, y: 3, z: 3}
+  aabbCalculatedRotation: {x: 0, y: 0, z: 0}
 --- !u!114 &953790803
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3534,8 +3650,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   size: {x: 3, y: 3, z: 3}
+  aabbCalculatedRotation: {x: 0, y: 0, z: 0}
 --- !u!114 &968009068
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3627,8 +3744,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   size: {x: 3, y: 3, z: 3}
+  aabbCalculatedRotation: {x: 0, y: 0, z: 0}
 --- !u!114 &970639068
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3733,8 +3851,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   size: {x: 3, y: 3, z: 3}
+  aabbCalculatedRotation: {x: 0, y: 0, z: 0}
 --- !u!114 &996053382
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3839,8 +3958,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   size: {x: 3, y: 3, z: 3}
+  aabbCalculatedRotation: {x: 0, y: 0, z: 0}
 --- !u!114 &1002350083
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3958,8 +4078,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   size: {x: 3, y: 3, z: 3}
+  aabbCalculatedRotation: {x: 0, y: 0, z: 0}
 --- !u!114 &1017770634
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4051,8 +4172,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   size: {x: 3, y: 3, z: 3}
+  aabbCalculatedRotation: {x: 0, y: 0, z: 0}
 --- !u!114 &1034159229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4170,8 +4292,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   size: {x: 3, y: 3, z: 3}
+  aabbCalculatedRotation: {x: 0, y: 0, z: 0}
 --- !u!114 &1056633244
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4276,8 +4399,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   size: {x: 3, y: 3, z: 3}
+  aabbCalculatedRotation: {x: 0, y: 0, z: 0}
 --- !u!114 &1075745958
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4442,8 +4566,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   size: {x: 3, y: 3, z: 3}
+  aabbCalculatedRotation: {x: 0, y: 0, z: 0}
 --- !u!1 &1145689182
 GameObject:
   m_ObjectHideFlags: 0
@@ -4488,8 +4613,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   size: {x: 3, y: 3, z: 3}
+  aabbCalculatedRotation: {x: 0, y: 0, z: 0}
 --- !u!114 &1145689185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4594,8 +4720,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   size: {x: 3, y: 3, z: 3}
+  aabbCalculatedRotation: {x: 0, y: 0, z: 0}
 --- !u!114 &1169193397
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4700,8 +4827,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   size: {x: 3, y: 3, z: 3}
+  aabbCalculatedRotation: {x: 0, y: 0, z: 0}
 --- !u!114 &1174993612
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4806,8 +4934,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   size: {x: 3, y: 3, z: 3}
+  aabbCalculatedRotation: {x: 0, y: 0, z: 0}
 --- !u!114 &1238504408
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4899,8 +5028,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   size: {x: 3, y: 3, z: 3}
+  aabbCalculatedRotation: {x: 0, y: 0, z: 0}
 --- !u!114 &1241045023
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5018,8 +5148,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   size: {x: 3, y: 3, z: 3}
+  aabbCalculatedRotation: {x: 0, y: 0, z: 0}
 --- !u!114 &1249858201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5124,8 +5255,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   size: {x: 3, y: 3, z: 3}
+  aabbCalculatedRotation: {x: 0, y: 0, z: 0}
 --- !u!114 &1280987180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5230,8 +5362,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   size: {x: 3, y: 3, z: 3}
+  aabbCalculatedRotation: {x: 0, y: 0, z: 0}
 --- !u!114 &1305928678
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5370,8 +5503,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   size: {x: 3, y: 3, z: 3}
+  aabbCalculatedRotation: {x: 0, y: 0, z: 0}
 --- !u!114 &1371961236
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5489,8 +5623,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   size: {x: 3, y: 3, z: 3}
+  aabbCalculatedRotation: {x: 0, y: 0, z: 0}
 --- !u!114 &1383634948
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5595,8 +5730,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   size: {x: 3, y: 3, z: 3}
+  aabbCalculatedRotation: {x: 0, y: 0, z: 0}
 --- !u!114 &1465015967
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5688,8 +5824,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   size: {x: 3, y: 3, z: 3}
+  aabbCalculatedRotation: {x: 0, y: 0, z: 0}
 --- !u!114 &1466416753
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5794,8 +5931,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   size: {x: 3, y: 3, z: 3}
+  aabbCalculatedRotation: {x: 0, y: 0, z: 0}
 --- !u!114 &1473921384
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5900,8 +6038,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   size: {x: 3, y: 3, z: 3}
+  aabbCalculatedRotation: {x: 0, y: 0, z: 0}
 --- !u!114 &1487418677
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6086,8 +6225,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   size: {x: 3, y: 3, z: 3}
+  aabbCalculatedRotation: {x: 0, y: 0, z: 0}
 --- !u!114 &1493087532
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6192,8 +6332,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   size: {x: 3, y: 3, z: 3}
+  aabbCalculatedRotation: {x: 0, y: 0, z: 0}
 --- !u!114 &1509328149
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6376,8 +6517,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   size: {x: 3, y: 3, z: 3}
+  aabbCalculatedRotation: {x: 0, y: 0, z: 0}
 --- !u!114 &1567018311
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6482,8 +6624,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   size: {x: 3, y: 3, z: 3}
+  aabbCalculatedRotation: {x: 0, y: 0, z: 0}
 --- !u!114 &1588428917
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6588,8 +6731,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   size: {x: 3, y: 3, z: 3}
+  aabbCalculatedRotation: {x: 0, y: 0, z: 0}
 --- !u!114 &1595326554
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6681,8 +6825,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   size: {x: 3, y: 3, z: 3}
+  aabbCalculatedRotation: {x: 0, y: 0, z: 0}
 --- !u!114 &1615782509
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6800,8 +6945,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   size: {x: 3, y: 3, z: 3}
+  aabbCalculatedRotation: {x: 0, y: 0, z: 0}
 --- !u!114 &1629552026
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6906,8 +7052,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   size: {x: 3, y: 3, z: 3}
+  aabbCalculatedRotation: {x: 0, y: 0, z: 0}
 --- !u!114 &1759142583
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7012,8 +7159,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   size: {x: 3, y: 3, z: 3}
+  aabbCalculatedRotation: {x: 0, y: 0, z: 0}
 --- !u!114 &1770324994
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7142,8 +7290,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   size: {x: 10, y: 10, z: 10}
+  aabbCalculatedRotation: {x: 0, y: 0, z: 0}
 --- !u!114 &1787802687
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7261,8 +7410,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   size: {x: 3, y: 3, z: 3}
+  aabbCalculatedRotation: {x: 0, y: 0, z: 0}
 --- !u!114 &1856001752
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7367,8 +7517,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   size: {x: 3, y: 3, z: 3}
+  aabbCalculatedRotation: {x: 0, y: 0, z: 0}
 --- !u!114 &1875666016
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7460,8 +7611,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   size: {x: 3, y: 3, z: 3}
+  aabbCalculatedRotation: {x: 0, y: 0, z: 0}
 --- !u!114 &1927599061
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7579,8 +7731,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   size: {x: 3, y: 3, z: 3}
+  aabbCalculatedRotation: {x: 0, y: 0, z: 0}
 --- !u!114 &1933867253
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7672,8 +7825,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   size: {x: 3, y: 3, z: 3}
+  aabbCalculatedRotation: {x: 0, y: 0, z: 0}
 --- !u!114 &1935832246
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7778,8 +7932,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   size: {x: 3, y: 3, z: 3}
+  aabbCalculatedRotation: {x: 0, y: 0, z: 0}
 --- !u!114 &2038659150
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7897,8 +8052,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   size: {x: 3, y: 3, z: 3}
+  aabbCalculatedRotation: {x: 0, y: 0, z: 0}
 --- !u!114 &2084813594
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8003,8 +8159,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   size: {x: 3, y: 3, z: 3}
+  aabbCalculatedRotation: {x: 0, y: 0, z: 0}
 --- !u!114 &2125927765
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8109,8 +8266,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   size: {x: 3, y: 3, z: 3}
+  aabbCalculatedRotation: {x: 0, y: 0, z: 0}
 --- !u!114 &2130872938
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8215,8 +8373,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   size: {x: 3, y: 3, z: 3}
+  aabbCalculatedRotation: {x: 0, y: 0, z: 0}
 --- !u!114 &2137334405
 MonoBehaviour:
   m_ObjectHideFlags: 0
