@@ -11,7 +11,7 @@ public class CollisionEngine : MonoBehaviour {
 			_objects.Add(c.transform);
 	}
 
-	protected virtual void Init (List<Transform> o) {
+	protected virtual void Init (ref List<Transform> o) {
 		_objects = o;
 	}
 
@@ -28,11 +28,11 @@ public class CollisionEngine : MonoBehaviour {
 		CollisionData cd = c1.isColliding (c2);
 
 		if (cd != null) {
-			c1.transform.position = c1.rb.lastTransform.position;
-			c2.transform.position = c2.rb.lastTransform.position;
+			c1.transform.position = c1.rb.lastPosition;
+			c2.transform.position = c2.rb.lastPosition;
 
-			c1.transform.rotation = c1.rb.lastTransform.rotation;
-			c2.transform.rotation = c2.rb.lastTransform.rotation;
+			c1.transform.rotation = c1.rb.lastRotation;
+			c2.transform.rotation = c2.rb.lastRotation;
 
 			float vi = (c1.rb.velocity.magnitude * (c1.rb.masse - c2.rb.masse) + (c2.rb.velocity.magnitude * 2 * c2.rb.masse) / (c1.rb.masse + c2.rb.masse));
 			float vj = (c2.rb.velocity.magnitude * (c2.rb.masse - c1.rb.masse) + (c1.rb.velocity.magnitude * 2 * c1.rb.masse) / (c1.rb.masse + c2.rb.masse));
@@ -40,8 +40,17 @@ public class CollisionEngine : MonoBehaviour {
 			c1.rb.angVelocity = Vector3.Cross (cd.contactPoint, c1.rb.velocity * c1.rb.masse) * 360/6.28f;
 			c2.rb.angVelocity = Vector3.Cross (-cd.contactPoint, c2.rb.velocity * c2.rb.masse) * 360/6.28f;
 
-			c1.rb.velocity = vi * -cd.contactPoint;
-			c2.rb.velocity = vj * cd.contactPoint;
+			Vector3 velDir = cd.contactPoint;
+			velDir.Normalize ();
+
+			c1.rb.velocity = vi * -velDir;
+			c2.rb.velocity = vj * velDir;
+
+			if (c1.rb.useGravity)
+				c2.rb.forces.Add(new Vector3(0, -c1.rb.gravity * c1.rb.masse, 0));
+
+			if (c2.rb.useGravity)
+				c1.rb.forces.Add(new Vector3(0, -c2.rb.gravity * c2.rb.masse, 0));
 
 			if (c1.rb.isStatic) {
 				c2.rb.velocity = Vector3.zero;

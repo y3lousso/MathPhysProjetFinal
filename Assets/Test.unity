@@ -137,13 +137,9 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 933732409}
-  - {fileID: 183399907}
-  - {fileID: 1292154179}
-  - {fileID: 1237902330}
+  m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &182874832
 MonoBehaviour:
@@ -153,10 +149,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 182874830}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97243c0a0e2634ecab138b5dce419456, type: 3}
+  m_Script: {fileID: 11500000, guid: ecc57075a395c4bd78dc6bfad63d5868, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _objects: []
+  position: {x: 0, y: 0, z: 0}
+  size: {x: 30, y: 30, z: 30}
+  nbMax: 30
+  nbMin: 10
+  margin: 0.9
+  parent: {fileID: 0}
+  childrens: []
 --- !u!1 &183399906
 GameObject:
   m_ObjectHideFlags: 0
@@ -183,11 +186,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 183399906}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -7}
+  m_LocalPosition: {x: 2, y: -1, z: -5.2700005}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 182874831}
-  m_RootOrder: 1
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &183399908
 MonoBehaviour:
@@ -203,7 +206,7 @@ MonoBehaviour:
   rb: {fileID: 0}
   localCenter: {x: 0, y: 0, z: 0}
   size: {x: 1, y: 1, z: 1}
-  adapatAABB: 0
+  adapatAABB: 1
   aabbCalculatedRotation: {x: 0, y: 0, z: 0}
 --- !u!114 &183399909
 MonoBehaviour:
@@ -223,7 +226,8 @@ MonoBehaviour:
   velocity: {x: 0, y: 0, z: 5}
   angVelocity: {x: 0, y: 0, z: 0}
   forces: []
-  lastTransform: {fileID: 0}
+  lastPosition: {x: 0, y: 0, z: 0}
+  lastRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!23 &183399910
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -291,11 +295,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 933732408}
   m_LocalRotation: {x: 0.2588186, y: -0, z: -0, w: 0.965926}
-  m_LocalPosition: {x: 0, y: -1, z: 7}
+  m_LocalPosition: {x: 2, y: -2, z: 8.73}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 182874831}
-  m_RootOrder: 0
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 30.000002, y: 0, z: 0}
 --- !u!114 &933732410
 MonoBehaviour:
@@ -345,7 +349,8 @@ MonoBehaviour:
   velocity: {x: 0, y: 0, z: -5}
   angVelocity: {x: 100, y: 100, z: 0}
   forces: []
-  lastTransform: {fileID: 0}
+  lastPosition: {x: 0, y: 0, z: 0}
+  lastRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!23 &933732412
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -493,11 +498,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1237902329}
   m_LocalRotation: {x: -0, y: 0.70710677, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -7, y: 0, z: 0.000004066939}
+  m_LocalPosition: {x: -5, y: -1, z: 1.7299995}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 182874831}
-  m_RootOrder: 3
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 90.00001, z: 0}
 --- !u!114 &1237902331
 MonoBehaviour:
@@ -547,7 +552,8 @@ MonoBehaviour:
   velocity: {x: 5, y: 0, z: 0}
   angVelocity: {x: 300, y: 300, z: 300}
   forces: []
-  lastTransform: {fileID: 0}
+  lastPosition: {x: 0, y: 0, z: 0}
+  lastRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!23 &1237902333
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -615,11 +621,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1292154178}
   m_LocalRotation: {x: -0, y: 0.70710677, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 7, y: -0.5, z: -0.000004066939}
+  m_LocalPosition: {x: 9, y: -1.5, z: 1.7299995}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 182874831}
-  m_RootOrder: 2
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 90.00001, z: 0}
 --- !u!114 &1292154180
 MonoBehaviour:
@@ -669,7 +675,8 @@ MonoBehaviour:
   velocity: {x: -5, y: 0, z: 0}
   angVelocity: {x: 0, y: 0, z: 0}
   forces: []
-  lastTransform: {fileID: 0}
+  lastPosition: {x: 0, y: 0, z: 0}
+  lastRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!23 &1292154182
 MeshRenderer:
   m_ObjectHideFlags: 0

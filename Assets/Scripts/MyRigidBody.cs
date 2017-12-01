@@ -15,10 +15,12 @@ public class MyRigidBody : MonoBehaviour {
 
 	public List<Vector3> forces = new List<Vector3>();
 
-	public Transform lastTransform;
+	public Vector3 lastPosition;
+	public Quaternion lastRotation;
 
 	void Start () {
-		lastTransform = transform;
+		lastPosition = transform.position;
+		lastRotation = transform.rotation;
 	}
 
 	void FixedUpdate () {
@@ -36,10 +38,11 @@ public class MyRigidBody : MonoBehaviour {
 
 		velocity += sum * (Time.fixedDeltaTime / masse);
 
-		angVelocity *= 0.95f;
+		angVelocity *= 0.8f;
 
 		if (!isStatic) {
-			lastTransform = transform;
+			lastPosition = transform.position;
+			lastRotation = transform.rotation;
 
 			transform.Translate (transform.InverseTransformDirection(velocity * Time.fixedDeltaTime));
 			transform.Rotate (angVelocity * Time.fixedDeltaTime);

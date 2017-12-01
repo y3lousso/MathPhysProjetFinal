@@ -58,9 +58,9 @@ public class MyAABBCollider : MyCollider
         float maxZ = Mathf.Max(point1.z, point2.z, point3.z, point4.z, point5.z, point6.z, point7.z, point8.z) - localCenter.z;
         float minZ = Mathf.Min(point1.z, point2.z, point3.z, point4.z, point5.z, point6.z, point7.z, point8.z) - localCenter.z;
 
-        size.x = maxX + Mathf.Abs(minX) ;
-        size.y = maxY + Mathf.Abs(minY);
-        size.z = maxZ + Mathf.Abs(minZ);
+		size.x = Mathf.Lerp(size.x, maxX + Mathf.Abs(minX), Time.deltaTime);
+		size.y = Mathf.Lerp(size.y, maxY + Mathf.Abs(minY), Time.deltaTime);
+		size.z = Mathf.Lerp(size.z, maxZ + Mathf.Abs(minZ), Time.deltaTime);
 
         aabbCalculatedRotation = transform.rotation.eulerAngles;
     }
