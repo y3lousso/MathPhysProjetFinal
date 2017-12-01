@@ -68,7 +68,13 @@ public class MyAABBCollider : MyCollider
 
     public override CollisionData isColliding(MySphereCollider c)
     {
-        return c.isColliding(this);
+		CollisionData cd = c.isColliding(this);
+
+		if (cd != null) {
+			cd.contactPoint = -cd.contactPoint;
+		}
+
+		return cd;
     }
 
     public override CollisionData isColliding(MyAABBCollider c)
@@ -104,7 +110,13 @@ public class MyAABBCollider : MyCollider
 
     public override CollisionData isColliding(MyOBBCollider c)
     {
-        return null;
+		CollisionData cd = c.isColliding(this);
+
+		if (cd != null) {
+			cd.contactPoint = -cd.contactPoint;
+		}
+
+		return cd;
     }
 
     /*
