@@ -6,9 +6,9 @@ using UnityEngine;
 
 public class MyOBBCollider : MyCollider
 {
-    public MyVector3 localCenter;
-    public MyVector3[] localAxis =  new MyVector3[] { new MyVector3(1,0,0), new MyVector3(0, 0, 1), new MyVector3(0, 0, 1) }; // 0 : x // 1 : y // 2 : z
-    public MyVector3 halfExtends;
+	public MyVector3 localCenter = MyVector3.Zero;
+    public MyVector3[] localAxis = new MyVector3[] { new MyVector3(1,0,0), new MyVector3(0, 1, 0), new MyVector3(0, 0, 1) }; // 0 : x // 1 : y // 2 : z
+	public MyVector3 halfExtends = new MyVector3(0.5f,0.5f,0.5f);
 
     public void FixedUpdate()
     {
@@ -35,16 +35,12 @@ public class MyOBBCollider : MyCollider
 
     public override CollisionData isColliding(MySphereCollider c)
     {
-        CollisionData cd = new CollisionData();
-
-        return cd;
+        return null;
     }
 
     public override CollisionData isColliding(MyAABBCollider c)
     {
-        CollisionData cd = new CollisionData();
-
-        return cd;
+       	return null;
     }
 
     public override CollisionData isColliding(MyOBBCollider c)
@@ -90,7 +86,7 @@ public class MyOBBCollider : MyCollider
             rb = c.halfExtends.Get(i) * AbsR.matrix[i,0] + c.halfExtends.Get(1) * AbsR.matrix[i,1] + c.halfExtends.Get(2) * AbsR.matrix[i, 2];
             if (Mathf.Abs(translationLocalVector.Get(i)) > ra + rb)
             {
-                return cd;
+                return null;
             }
         }
 
@@ -161,8 +157,7 @@ public class MyOBBCollider : MyCollider
 
         // Since no separating axis is found, the OBBs must be intersecting
         // Need to adjust the contact point location
-        cd.contactPoint = translationLocalVector / 2;
-        Debug.Log("OBB collision detected");
+        cd.contactPoint = -translationLocalVector / 2;
         return cd;
     }
 
@@ -172,5 +167,44 @@ public class MyOBBCollider : MyCollider
         Gizmos.DrawLine(transform.position + (Vector3)localCenter, transform.position + (Vector3)localCenter + (Vector3)localAxis[0]);
         Gizmos.DrawLine(transform.position + (Vector3)localCenter, transform.position + (Vector3)localCenter + (Vector3)localAxis[1]);
         Gizmos.DrawLine(transform.position + (Vector3)localCenter, transform.position + (Vector3)localCenter + (Vector3)localAxis[2]);
+
+		Gizmos.color = new Color(0f, 1f, 0f, 1f);
+		Vector3 A = transform.position + (Vector3)localCenter + Vector3.Scale ((Vector3)localAxis [0], (Vector3)halfExtends)
+			- Vector3.Scale ((Vector3)localAxis [1], (Vector3)halfExtends)
+			- Vector3.Scale ((Vector3)localAxis [2], (Vector3)halfExtends);
+		Vector3 B = transform.position + (Vector3)localCenter - Vector3.Scale ((Vector3)localAxis [0], (Vector3)halfExtends)
+			- Vector3.Scale ((Vector3)localAxis [1], (Vector3)halfExtends)
+			- Vector3.Scale ((Vector3)localAxis [2], (Vector3)halfExtends);
+
+		Vector3 C = transform.position + (Vector3)localCenter - Vector3.Scale ((Vector3)localAxis [0], (Vector3)halfExtends)
+			+ Vector3.Scale ((Vector3)localAxis [1], (Vector3)halfExtends)
+			- Vector3.Scale ((Vector3)localAxis [2], (Vector3)halfExtends);
+		Vector3 D = transform.position + (Vector3)localCenter - Vector3.Scale ((Vector3)localAxis [0], (Vector3)halfExtends)
+			- Vector3.Scale ((Vector3)localAxis [1], (Vector3)halfExtends)
+			- Vector3.Scale ((Vector3)localAxis [2], (Vector3)halfExtends);
+
+		Vector3 E = transform.position + (Vector3)localCenter - Vector3.Scale ((Vector3)localAxis [0], (Vector3)halfExtends)
+			- Vector3.Scale ((Vector3)localAxis [1], (Vector3)halfExtends)
+			+ Vector3.Scale ((Vector3)localAxis [2], (Vector3)halfExtends);
+		Vector3 F = transform.position + (Vector3)localCenter - Vector3.Scale ((Vector3)localAxis [0], (Vector3)halfExtends)
+			- Vector3.Scale ((Vector3)localAxis [1], (Vector3)halfExtends)
+			- Vector3.Scale ((Vector3)localAxis [2], (Vector3)halfExtends);
+
+		Gizmos.DrawLine (A, B);
+		Gizmos.DrawLine (A + Vector3.Scale ((Vector3)localAxis [1], (Vector3)halfExtends*2), B + Vector3.Scale ((Vector3)localAxis [1], (Vector3)halfExtends*2));
+		Gizmos.DrawLine (A + Vector3.Scale ((Vector3)localAxis [1], (Vector3)halfExtends*2) + Vector3.Scale ((Vector3)localAxis [2], (Vector3)halfExtends*2), B + Vector3.Scale ((Vector3)localAxis [1], (Vector3)halfExtends*2) + Vector3.Scale ((Vector3)localAxis [2], (Vector3)halfExtends*2));
+		Gizmos.DrawLine (A + Vector3.Scale ((Vector3)localAxis [2], (Vector3)halfExtends*2), B + Vector3.Scale ((Vector3)localAxis [2], (Vector3)halfExtends*2));
+
+		Gizmos.DrawLine (C, D);
+		Gizmos.DrawLine (C + Vector3.Scale ((Vector3)localAxis [0], (Vector3)halfExtends*2), D + Vector3.Scale ((Vector3)localAxis [0], (Vector3)halfExtends*2));
+		Gizmos.DrawLine (C + Vector3.Scale ((Vector3)localAxis [0], (Vector3)halfExtends*2) + Vector3.Scale ((Vector3)localAxis [2], (Vector3)halfExtends*2), D + Vector3.Scale ((Vector3)localAxis [0], (Vector3)halfExtends*2) + Vector3.Scale ((Vector3)localAxis [2], (Vector3)halfExtends*2));
+		Gizmos.DrawLine (C + Vector3.Scale ((Vector3)localAxis [2], (Vector3)halfExtends*2), D + Vector3.Scale ((Vector3)localAxis [2], (Vector3)halfExtends*2));
+
+		Gizmos.DrawLine (E, F);
+		Gizmos.DrawLine (E + Vector3.Scale ((Vector3)localAxis [0], (Vector3)halfExtends*2), F + Vector3.Scale ((Vector3)localAxis [0], (Vector3)halfExtends*2));
+		Gizmos.DrawLine (E + Vector3.Scale ((Vector3)localAxis [0], (Vector3)halfExtends*2) + Vector3.Scale ((Vector3)localAxis [1], (Vector3)halfExtends*2), F + Vector3.Scale ((Vector3)localAxis [0], (Vector3)halfExtends*2) + Vector3.Scale ((Vector3)localAxis [1], (Vector3)halfExtends*2));
+		Gizmos.DrawLine (E + Vector3.Scale ((Vector3)localAxis [1], (Vector3)halfExtends*2), F + Vector3.Scale ((Vector3)localAxis [1], (Vector3)halfExtends*2));
+
+
     }
 }

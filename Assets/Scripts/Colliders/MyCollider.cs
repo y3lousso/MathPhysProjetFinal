@@ -26,7 +26,7 @@ public abstract class MyCollider : MonoBehaviour {
 
 	public abstract CollisionData isColliding (MySphereCollider c);
 	public abstract CollisionData isColliding (MyAABBCollider c);
-    public abstract CollisionData isColliding(MyOBBCollider c);
+    public abstract CollisionData isColliding (MyOBBCollider c);
 }
 
 public class CollisionData {

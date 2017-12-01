@@ -197,12 +197,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 183399906}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d202b457f13de4cf38bdeb7eae95c424, type: 3}
+  m_Script: {fileID: 11500000, guid: 37ef9aad244ff604f8ab7bbede9e66f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
-  size: {x: 1, y: 1, z: 1}
+  localCenter:
+    x: 0
+    y: 0
+    z: 0
+  localAxis:
+  - x: 1
+    y: 0
+    z: 0
+  - x: 0
+    y: 1
+    z: 0
+  - x: 0
+    y: 0
+    z: 1
+  halfExtends:
+    x: 0.5
+    y: 0.5
+    z: 0.5
 --- !u!114 &183399909
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -214,7 +230,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6047881f93a004b2e9a02053447f1105, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  masse: 1
+  masse: 50
   gravity: 9.81
   useGravity: 0
   isStatic: 0
@@ -288,13 +304,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 933732408}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.2588186, y: -0, z: -0, w: 0.965926}
   m_LocalPosition: {x: 0, y: -1, z: 7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 182874831}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 30.000002, y: 0, z: 0}
 --- !u!114 &933732410
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -303,12 +319,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 933732408}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d202b457f13de4cf38bdeb7eae95c424, type: 3}
+  m_Script: {fileID: 11500000, guid: 37ef9aad244ff604f8ab7bbede9e66f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
-  size: {x: 1, y: 1, z: 1}
+  localCenter:
+    x: 0
+    y: 0
+    z: 0
+  localAxis:
+  - x: 1
+    y: 0
+    z: 0
+  - x: 0
+    y: 1
+    z: 0
+  - x: 0
+    y: 0
+    z: 1
+  halfExtends:
+    x: 0.5
+    y: 0.5
+    z: 0.5
 --- !u!114 &933732411
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -320,12 +352,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6047881f93a004b2e9a02053447f1105, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  masse: 1
+  masse: 50
   gravity: 9.81
   useGravity: 0
   isStatic: 0
   velocity: {x: 0, y: 0, z: -5}
-  angVelocity: {x: 0, y: 0, z: 0}
+  angVelocity: {x: 100, y: 100, z: 0}
   forces: []
   lastTransform: {fileID: 0}
 --- !u!23 &933732412
@@ -489,12 +521,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 1237902329}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d202b457f13de4cf38bdeb7eae95c424, type: 3}
+  m_Script: {fileID: 11500000, guid: 37ef9aad244ff604f8ab7bbede9e66f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
-  size: {x: 1, y: 1, z: 1}
+  localCenter:
+    x: 0
+    y: 0
+    z: 0
+  localAxis:
+  - x: 1
+    y: 0
+    z: 0
+  - x: 0
+    y: 1
+    z: 0
+  - x: 0
+    y: 0
+    z: 1
+  halfExtends:
+    x: 0.5
+    y: 0.5
+    z: 0.5
 --- !u!114 &1237902332
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -506,12 +554,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6047881f93a004b2e9a02053447f1105, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  masse: 1
+  masse: 50
   gravity: 9.81
   useGravity: 0
   isStatic: 0
   velocity: {x: 5, y: 0, z: 0}
-  angVelocity: {x: 0, y: 0, z: 0}
+  angVelocity: {x: 300, y: 300, z: 300}
   forces: []
   lastTransform: {fileID: 0}
 --- !u!23 &1237902333
@@ -595,12 +643,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 1292154178}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d202b457f13de4cf38bdeb7eae95c424, type: 3}
+  m_Script: {fileID: 11500000, guid: 37ef9aad244ff604f8ab7bbede9e66f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
-  size: {x: 1, y: 1, z: 1}
+  localCenter:
+    x: 0
+    y: 0
+    z: 0
+  localAxis:
+  - x: 1
+    y: 0
+    z: 0
+  - x: 0
+    y: 1
+    z: 0
+  - x: 0
+    y: 0
+    z: 1
+  halfExtends:
+    x: 0.5
+    y: 0.5
+    z: 0.5
 --- !u!114 &1292154181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -612,7 +676,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6047881f93a004b2e9a02053447f1105, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  masse: 1
+  masse: 50
   gravity: 9.81
   useGravity: 0
   isStatic: 0

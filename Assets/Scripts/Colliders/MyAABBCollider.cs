@@ -6,21 +6,23 @@ public class MyAABBCollider : MyCollider
 {
     public Vector3 localCenter;
     public Vector3 size = Vector3.one;
+	[Space(10)]
+	public bool adapatAABB;
     public Vector3 aabbCalculatedRotation;
 
     // For quick gizmo
-    public Vector3 point1;
-    public Vector3 point2;
-    public Vector3 point3;
-    public Vector3 point4;
-    public Vector3 point5;
-    public Vector3 point6;
-    public Vector3 point7;
-    public Vector3 point8;
+	private Vector3 point1;
+	private Vector3 point2;
+	private Vector3 point3;
+	private Vector3 point4;
+	private Vector3 point5;
+	private Vector3 point6;
+	private Vector3 point7;
+	private Vector3 point8;
 
     public void FixedUpdate()
     {
-        if (aabbCalculatedRotation != transform.rotation.eulerAngles)
+		if (adapatAABB && aabbCalculatedRotation != transform.rotation.eulerAngles)
         {
             CalculateAABB();
         }
