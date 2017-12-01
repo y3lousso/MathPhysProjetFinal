@@ -41,10 +41,15 @@ public class MySphereCollider : MyCollider {
 		return null;
 	}
 
-	/*
+    public override CollisionData isColliding(MyOBBCollider c)
+    {
+        return null;
+    }
+
+    /*
 	 * Draw
 	 */
-	void OnDrawGizmos() {
+    void OnDrawGizmos() {
 		Gizmos.color = new Color (0f, 1f, 0f, 1f);
 
 		Gizmos.DrawWireSphere (transform.position + localCenter, radius);       

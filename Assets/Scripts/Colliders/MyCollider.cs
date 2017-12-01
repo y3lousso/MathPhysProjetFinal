@@ -18,12 +18,15 @@ public abstract class MyCollider : MonoBehaviour {
 			return isColliding ((MySphereCollider)c);
 		if (c is MyAABBCollider)
 			return isColliding ((MyAABBCollider)c);
+        if (c is MyOBBCollider)
+            return isColliding((MyOBBCollider)c);
 		
 		return null;
 	}
 
 	public abstract CollisionData isColliding (MySphereCollider c);
 	public abstract CollisionData isColliding (MyAABBCollider c);
+    public abstract CollisionData isColliding(MyOBBCollider c);
 }
 
 public class CollisionData {

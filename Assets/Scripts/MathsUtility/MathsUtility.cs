@@ -71,22 +71,22 @@ public class MathsUtility
     {
         return new MyMatrix3x3(new float[,] {
     { 1.0f, 0.0f, 0.0f },
-    { 0.0f, Mathf.Cos(angleX), Mathf.Sin(angleX) },
-    { 0.0f, -Mathf.Sin(angleX), Mathf.Cos(angleX) } });
+    { 0.0f, Mathf.Cos(angleX), -Mathf.Sin(angleX) },
+    { 0.0f, Mathf.Sin(angleX), Mathf.Cos(angleX) } });
     }
     public static MyMatrix3x3 RotationMatrixY(float angleY)
     {
         return new MyMatrix3x3(new float[,] {
-    { Mathf.Cos(angleY), 0.0f, -Mathf.Sin(angleY) },
+    { Mathf.Cos(angleY), 0.0f, Mathf.Sin(angleY) },
     { 0.0f, 1.0f, 0.0f },
-    { Mathf.Sin(angleY), 0.0f, Mathf.Cos(angleY) } });
+    { -Mathf.Sin(angleY), 0.0f, Mathf.Cos(angleY) } });
     }
 
     public static MyMatrix3x3 RotationMatrixZ(float angleZ)
     {
         return new MyMatrix3x3(new float[,] {
-    { Mathf.Cos(angleZ), Mathf.Sin(angleZ), 0.0f },
-    { -Mathf.Sin(angleZ), Mathf.Cos(angleZ), 0.0f },
+    { Mathf.Cos(angleZ), -Mathf.Sin(angleZ), 0.0f },
+    { Mathf.Sin(angleZ), Mathf.Cos(angleZ), 0.0f },
     { 0.0f, 0.0f, 1.0f } });
     }
 

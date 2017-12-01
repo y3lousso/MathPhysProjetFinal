@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
 [System.Serializable]
 public class MyVector3
 {
@@ -53,11 +52,7 @@ public class MyVector3
     {
         return new MyVector3(1.0f);
     }
-
-    public float DotProduct(MyVector3 other)
-    {
-        return x * other.x + y * other.y + z * other.z;
-    }
+   
 
     public static MyVector3 operator +(MyVector3 v1, MyVector3 v2)
     {           
@@ -99,10 +94,20 @@ public class MyVector3
         return v1.x != v2.x || v1.y != v2.y || v1.z != v2.z;
     }
 
+    public override bool Equals(object v1)
+    {  
+       return (object)this == v1;  
+    }  
+
+    public override int GetHashCode()
+    {
+        return 0;
+    }
+
     // Cast from MyVector to Unity Vector3 
     public static implicit operator Vector3(MyVector3 vector)
     {
-        return new UnityEngine.Vector3(vector.x, vector.y, vector.z);
+        return new Vector3(vector.x, vector.y, vector.z);
     }
 
     // Cast from Unity Vector3 to MyVector3
@@ -111,9 +116,26 @@ public class MyVector3
         return new MyVector3(vector.x, vector.y, vector.z);
     }
 
-    public static MyVector3 CrossProduct(MyVector3 a, MyVector3 b)
+    public static float DotProduct(MyVector3 v1, MyVector3 v2)
     {
-        return new MyVector3(a.y * b.z - a.z * b.y, a.z * b.x - a.x * b.z, a.x * b.y - a.y * b.x);
+        return v1.x * v2.x + v1.y * v2.y + v1.z * v2.z;
+    }
+
+    public static MyVector3 CrossProduct(MyVector3 v1, MyVector3 v2)
+    {
+        return new MyVector3(v1.y * v2.z - v1.z * v2.y, v1.z * v2.x - v1.x * v2.z, v1.x * v2.y - v1.y * v2.x);
+    }
+
+    public float Get(int index)
+    {
+        if (index == 0)
+            return x;
+        else if (index == 1)
+            return y;
+        else if (index == 2)
+            return z;
+        else
+            throw new System.Exception("Incorrect index.");
     }
 
     public MyVector3 Add(MyVector3 v)
