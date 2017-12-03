@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class CollisionEngine : MonoBehaviour {
 
+	public bool resetTransformsOnCollision = false;
+	public bool rejectionForceOnCollision = false;
+
 	public List<Transform> _objects = new List<Transform>();
 
 	protected virtual void Start () {
@@ -28,13 +31,16 @@ public class CollisionEngine : MonoBehaviour {
 		CollisionData cd = c1.isColliding (c2);
 
 		if (cd != null) {
-			// Reset to last posisitons
-			c1.transform.position = c1.rb.lastPosition;
-			c2.transform.position = c2.rb.lastPosition;
+			// set to true if you have static objects
+			if (resetTransformsOnCollision) {
+				// Reset to last posisitons
+				c1.transform.position = c1.rb.lastPosition;
+				c2.transform.position = c2.rb.lastPosition;
 
-			// Reset to last rotations
-			c1.transform.rotation = c1.rb.lastRotation;
-			c2.transform.rotation = c2.rb.lastRotation;
+				// Reset to last rotations
+				c1.transform.rotation = c1.rb.lastRotation;
+				c2.transform.rotation = c2.rb.lastRotation;
+			}
 
 			// Estimate resulting velocities
 			float vi = (c1.rb.velocity.magnitude * (c1.rb.masse - c2.rb.masse) + (c2.rb.velocity.magnitude * 2 * c2.rb.masse) / (c1.rb.masse + c2.rb.masse));
@@ -55,6 +61,11 @@ public class CollisionEngine : MonoBehaviour {
 			// Apply velocity
 			c1.rb.velocity = vi * -velDir;
 			c2.rb.velocity = vj * velDir;
+
+			if (rejectionForceOnCollision) {
+				c1.rb.forces.Add (-velDir);
+				c2.rb.forces.Add (velDir);
+			}
 
 			// tranfer gravity on contact otherwise stacked object won't fall if bottom one has no gravity
 			if (c1.rb.useGravity)
