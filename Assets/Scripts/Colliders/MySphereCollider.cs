@@ -35,7 +35,7 @@ public class MySphereCollider : MyCollider {
 			CollisionData cd = new CollisionData();
 
 			cd.contactPoint = (c.localCenter - localCenter) / 2;
-            Debug.Log("localCenter : " + localCenter);
+            // Debug.Log("localCenter : " + localCenter);
             return cd;
 		}
 		return null;
@@ -43,7 +43,13 @@ public class MySphereCollider : MyCollider {
 
     public override CollisionData isColliding(MyOBBCollider c)
     {
-        return null;
+		CollisionData cd = c.isColliding(this);
+
+		if (cd != null) {
+			cd.contactPoint = -cd.contactPoint;
+		}
+
+		return cd;
     }
 
     /*

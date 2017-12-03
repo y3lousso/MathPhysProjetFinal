@@ -156,7 +156,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   radius: 1
 --- !u!114 &51700939
 MonoBehaviour:
@@ -176,7 +176,8 @@ MonoBehaviour:
   velocity: {x: 0, y: 0, z: 0}
   angVelocity: {x: 0, y: 0, z: 0}
   forces: []
-  lastTransform: {fileID: 0}
+  lastPosition: {x: 0, y: 0, z: 0}
+  lastRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!23 &51700940
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -262,7 +263,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   radius: 1
 --- !u!114 &118971822
 MonoBehaviour:
@@ -282,7 +283,8 @@ MonoBehaviour:
   velocity: {x: 0, y: 0, z: 0}
   angVelocity: {x: 0, y: 0, z: 0}
   forces: []
-  lastTransform: {fileID: 0}
+  lastPosition: {x: 0, y: 0, z: 0}
+  lastRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!23 &118971823
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -368,7 +370,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   radius: 1
 --- !u!114 &148051086
 MonoBehaviour:
@@ -388,7 +390,8 @@ MonoBehaviour:
   velocity: {x: 0, y: 0, z: 0}
   angVelocity: {x: 0, y: 0, z: 0}
   forces: []
-  lastTransform: {fileID: 0}
+  lastPosition: {x: 0, y: 0, z: 0}
+  lastRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!23 &148051087
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -461,7 +464,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   radius: 1
 --- !u!114 &177282864
 MonoBehaviour:
@@ -481,7 +484,8 @@ MonoBehaviour:
   velocity: {x: 0, y: 0, z: -20}
   angVelocity: {x: 0, y: 0, z: 0}
   forces: []
-  lastTransform: {fileID: 0}
+  lastPosition: {x: 0, y: 0, z: 0}
+  lastRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!23 &177282865
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -580,7 +584,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   radius: 1
 --- !u!114 &413163534
 MonoBehaviour:
@@ -600,7 +604,8 @@ MonoBehaviour:
   velocity: {x: 0, y: 0, z: 0}
   angVelocity: {x: 0, y: 0, z: 0}
   forces: []
-  lastTransform: {fileID: 0}
+  lastPosition: {x: 0, y: 0, z: 0}
+  lastRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!23 &413163535
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -686,7 +691,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   radius: 1
 --- !u!114 &504853548
 MonoBehaviour:
@@ -706,7 +711,8 @@ MonoBehaviour:
   velocity: {x: 0, y: 0, z: 0}
   angVelocity: {x: 0, y: 0, z: 0}
   forces: []
-  lastTransform: {fileID: 0}
+  lastPosition: {x: 0, y: 0, z: 0}
+  lastRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!23 &504853549
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -779,7 +785,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   radius: 1
 --- !u!114 &600862744
 MonoBehaviour:
@@ -799,7 +805,8 @@ MonoBehaviour:
   velocity: {x: 20, y: 0, z: 0}
   angVelocity: {x: 0, y: 0, z: 0}
   forces: []
-  lastTransform: {fileID: 0}
+  lastPosition: {x: 0, y: 0, z: 0}
+  lastRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!23 &600862745
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -978,7 +985,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   radius: 1
 --- !u!114 &626707991
 MonoBehaviour:
@@ -998,7 +1005,8 @@ MonoBehaviour:
   velocity: {x: 0, y: 0, z: 0}
   angVelocity: {x: 0, y: 0, z: 0}
   forces: []
-  lastTransform: {fileID: 0}
+  lastPosition: {x: 0, y: 0, z: 0}
+  lastRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!23 &626707992
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1149,7 +1157,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   radius: 1
 --- !u!114 &742833126
 MonoBehaviour:
@@ -1169,7 +1177,8 @@ MonoBehaviour:
   velocity: {x: 0, y: 0, z: 0}
   angVelocity: {x: 0, y: 0, z: 0}
   forces: []
-  lastTransform: {fileID: 0}
+  lastPosition: {x: 0, y: 0, z: 0}
+  lastRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!23 &742833127
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1255,7 +1264,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   radius: 1
 --- !u!114 &881849375
 MonoBehaviour:
@@ -1275,7 +1284,8 @@ MonoBehaviour:
   velocity: {x: 0, y: 0, z: 0}
   angVelocity: {x: 0, y: 0, z: 0}
   forces: []
-  lastTransform: {fileID: 0}
+  lastPosition: {x: 0, y: 0, z: 0}
+  lastRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!23 &881849376
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1361,7 +1371,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   radius: 1
 --- !u!114 &939341403
 MonoBehaviour:
@@ -1381,7 +1391,8 @@ MonoBehaviour:
   velocity: {x: 0, y: 0, z: 0}
   angVelocity: {x: 0, y: 0, z: 0}
   forces: []
-  lastTransform: {fileID: 0}
+  lastPosition: {x: 0, y: 0, z: 0}
+  lastRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!23 &939341404
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1467,7 +1478,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   radius: 1
 --- !u!114 &947310541
 MonoBehaviour:
@@ -1487,7 +1498,8 @@ MonoBehaviour:
   velocity: {x: 0, y: 0, z: 0}
   angVelocity: {x: 0, y: 0, z: 0}
   forces: []
-  lastTransform: {fileID: 0}
+  lastPosition: {x: 0, y: 0, z: 0}
+  lastRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!23 &947310542
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1573,7 +1585,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   radius: 1
 --- !u!114 &958946394
 MonoBehaviour:
@@ -1593,7 +1605,8 @@ MonoBehaviour:
   velocity: {x: 0, y: 0, z: 0}
   angVelocity: {x: 0, y: 0, z: 0}
   forces: []
-  lastTransform: {fileID: 0}
+  lastPosition: {x: 0, y: 0, z: 0}
+  lastRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!23 &958946395
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1679,7 +1692,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   radius: 1
 --- !u!114 &982086683
 MonoBehaviour:
@@ -1699,7 +1712,8 @@ MonoBehaviour:
   velocity: {x: 0, y: 0, z: 0}
   angVelocity: {x: 0, y: 0, z: 0}
   forces: []
-  lastTransform: {fileID: 0}
+  lastPosition: {x: 0, y: 0, z: 0}
+  lastRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!23 &982086684
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1826,7 +1840,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   radius: 1
 --- !u!114 &1159751866
 MonoBehaviour:
@@ -1846,7 +1860,8 @@ MonoBehaviour:
   velocity: {x: 0, y: 0, z: 0}
   angVelocity: {x: 0, y: 0, z: 0}
   forces: []
-  lastTransform: {fileID: 0}
+  lastPosition: {x: 0, y: 0, z: 0}
+  lastRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!23 &1159751867
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1932,7 +1947,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   radius: 1
 --- !u!114 &1180793848
 MonoBehaviour:
@@ -1952,7 +1967,8 @@ MonoBehaviour:
   velocity: {x: 0, y: 0, z: 0}
   angVelocity: {x: 0, y: 0, z: 0}
   forces: []
-  lastTransform: {fileID: 0}
+  lastPosition: {x: 0, y: 0, z: 0}
+  lastRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!23 &1180793849
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2091,7 +2107,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   radius: 1
 --- !u!114 &1238378843
 MonoBehaviour:
@@ -2111,7 +2127,8 @@ MonoBehaviour:
   velocity: {x: 0, y: 0, z: 0}
   angVelocity: {x: 0, y: 0, z: 0}
   forces: []
-  lastTransform: {fileID: 0}
+  lastPosition: {x: 0, y: 0, z: 0}
+  lastRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!23 &1238378844
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2197,7 +2214,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   radius: 1
 --- !u!114 &1271303684
 MonoBehaviour:
@@ -2217,7 +2234,8 @@ MonoBehaviour:
   velocity: {x: 0, y: 0, z: 0}
   angVelocity: {x: 0, y: 0, z: 0}
   forces: []
-  lastTransform: {fileID: 0}
+  lastPosition: {x: 0, y: 0, z: 0}
+  lastRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!23 &1271303685
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2290,7 +2308,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   radius: 1
 --- !u!114 &1493624041
 MonoBehaviour:
@@ -2310,7 +2328,8 @@ MonoBehaviour:
   velocity: {x: 0, y: 0, z: 20}
   angVelocity: {x: 0, y: 0, z: 0}
   forces: []
-  lastTransform: {fileID: 0}
+  lastPosition: {x: 0, y: 0, z: 0}
+  lastRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!23 &1493624042
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2409,7 +2428,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   radius: 1
 --- !u!114 &1554929578
 MonoBehaviour:
@@ -2429,7 +2448,8 @@ MonoBehaviour:
   velocity: {x: 0, y: 0, z: 0}
   angVelocity: {x: 0, y: 0, z: 0}
   forces: []
-  lastTransform: {fileID: 0}
+  lastPosition: {x: 0, y: 0, z: 0}
+  lastRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!23 &1554929579
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2515,7 +2535,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   radius: 1
 --- !u!114 &1652024664
 MonoBehaviour:
@@ -2535,7 +2555,8 @@ MonoBehaviour:
   velocity: {x: 0, y: 0, z: 0}
   angVelocity: {x: 0, y: 0, z: 0}
   forces: []
-  lastTransform: {fileID: 0}
+  lastPosition: {x: 0, y: 0, z: 0}
+  lastRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!23 &1652024665
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2621,7 +2642,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   radius: 1
 --- !u!114 &1750524269
 MonoBehaviour:
@@ -2641,7 +2662,8 @@ MonoBehaviour:
   velocity: {x: 0, y: 0, z: 0}
   angVelocity: {x: 0, y: 0, z: 0}
   forces: []
-  lastTransform: {fileID: 0}
+  lastPosition: {x: 0, y: 0, z: 0}
+  lastRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!23 &1750524270
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2727,7 +2749,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   radius: 1
 --- !u!114 &1793393627
 MonoBehaviour:
@@ -2747,7 +2769,8 @@ MonoBehaviour:
   velocity: {x: 0, y: 0, z: 0}
   angVelocity: {x: 0, y: 0, z: 0}
   forces: []
-  lastTransform: {fileID: 0}
+  lastPosition: {x: 0, y: 0, z: 0}
+  lastRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!23 &1793393628
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2820,7 +2843,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   radius: 1
 --- !u!114 &1814530080
 MonoBehaviour:
@@ -2840,7 +2863,8 @@ MonoBehaviour:
   velocity: {x: 0, y: 0, z: 0}
   angVelocity: {x: 0, y: 0, z: 0}
   forces: []
-  lastTransform: {fileID: 0}
+  lastPosition: {x: 0, y: 0, z: 0}
+  lastRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!23 &1814530081
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2939,7 +2963,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   radius: 1
 --- !u!114 &1823192402
 MonoBehaviour:
@@ -2959,7 +2983,8 @@ MonoBehaviour:
   velocity: {x: 0, y: 0, z: 0}
   angVelocity: {x: 0, y: 0, z: 0}
   forces: []
-  lastTransform: {fileID: 0}
+  lastPosition: {x: 0, y: 0, z: 0}
+  lastRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!23 &1823192403
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3045,7 +3070,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   radius: 1
 --- !u!114 &1925998857
 MonoBehaviour:
@@ -3065,7 +3090,8 @@ MonoBehaviour:
   velocity: {x: 0, y: 0, z: 0}
   angVelocity: {x: 0, y: 0, z: 0}
   forces: []
-  lastTransform: {fileID: 0}
+  lastPosition: {x: 0, y: 0, z: 0}
+  lastRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!23 &1925998858
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3151,7 +3177,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   radius: 1
 --- !u!114 &1944204359
 MonoBehaviour:
@@ -3171,7 +3197,8 @@ MonoBehaviour:
   velocity: {x: 0, y: 0, z: 0}
   angVelocity: {x: 0, y: 0, z: 0}
   forces: []
-  lastTransform: {fileID: 0}
+  lastPosition: {x: 0, y: 0, z: 0}
+  lastRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!23 &1944204360
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3257,7 +3284,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   radius: 1
 --- !u!114 &2019617497
 MonoBehaviour:
@@ -3277,7 +3304,8 @@ MonoBehaviour:
   velocity: {x: 0, y: 0, z: 0}
   angVelocity: {x: 0, y: 0, z: 0}
   forces: []
-  lastTransform: {fileID: 0}
+  lastPosition: {x: 0, y: 0, z: 0}
+  lastRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!23 &2019617498
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3363,7 +3391,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   radius: 1
 --- !u!114 &2055354194
 MonoBehaviour:
@@ -3383,7 +3411,8 @@ MonoBehaviour:
   velocity: {x: 0, y: 0, z: 0}
   angVelocity: {x: 0, y: 0, z: 0}
   forces: []
-  lastTransform: {fileID: 0}
+  lastPosition: {x: 0, y: 0, z: 0}
+  lastRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!23 &2055354195
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3456,7 +3485,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  center: {x: 0, y: 0, z: 0}
+  localCenter: {x: 0, y: 0, z: 0}
   radius: 1
 --- !u!114 &2144913081
 MonoBehaviour:
@@ -3476,7 +3505,8 @@ MonoBehaviour:
   velocity: {x: -10, y: 0, z: 10}
   angVelocity: {x: 0, y: 0, z: 0}
   forces: []
-  lastTransform: {fileID: 0}
+  lastPosition: {x: 0, y: 0, z: 0}
+  lastRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!23 &2144913082
 MeshRenderer:
   m_ObjectHideFlags: 0

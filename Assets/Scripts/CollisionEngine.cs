@@ -28,30 +28,42 @@ public class CollisionEngine : MonoBehaviour {
 		CollisionData cd = c1.isColliding (c2);
 
 		if (cd != null) {
+			// Reset to last posisitons
 			c1.transform.position = c1.rb.lastPosition;
 			c2.transform.position = c2.rb.lastPosition;
 
+			// Reset to last rotations
 			c1.transform.rotation = c1.rb.lastRotation;
 			c2.transform.rotation = c2.rb.lastRotation;
 
+			// Estimate resulting velocities
 			float vi = (c1.rb.velocity.magnitude * (c1.rb.masse - c2.rb.masse) + (c2.rb.velocity.magnitude * 2 * c2.rb.masse) / (c1.rb.masse + c2.rb.masse));
 			float vj = (c2.rb.velocity.magnitude * (c2.rb.masse - c1.rb.masse) + (c1.rb.velocity.magnitude * 2 * c1.rb.masse) / (c1.rb.masse + c2.rb.masse));
 
+			// Estimate angular velocity
 			c1.rb.angVelocity = Vector3.Cross (cd.contactPoint, c1.rb.velocity * c1.rb.masse) * 360/6.28f;
 			c2.rb.angVelocity = Vector3.Cross (-cd.contactPoint, c2.rb.velocity * c2.rb.masse) * 360/6.28f;
 
+			// Draw contact point for debug
+			Debug.DrawLine (c1.transform.position, c1.transform.position + cd.contactPoint, Color.blue);
+			Debug.DrawLine (c2.transform.position, c2.transform.position - cd.contactPoint, Color.blue);
+
+			// Set velocity direction
 			Vector3 velDir = cd.contactPoint;
 			velDir.Normalize ();
 
+			// Apply velocity
 			c1.rb.velocity = vi * -velDir;
 			c2.rb.velocity = vj * velDir;
 
+			// tranfer gravity on contact otherwise stacked object won't fall if bottom one has no gravity
 			if (c1.rb.useGravity)
 				c2.rb.forces.Add(new Vector3(0, -c1.rb.gravity * c1.rb.masse, 0));
 
 			if (c2.rb.useGravity)
 				c1.rb.forces.Add(new Vector3(0, -c2.rb.gravity * c2.rb.masse, 0));
 
+			// if one is static it stops the other
 			if (c1.rb.isStatic) {
 				c2.rb.velocity = Vector3.zero;
 				c2.rb.angVelocity = Vector3.zero;
