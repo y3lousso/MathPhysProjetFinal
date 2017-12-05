@@ -7,7 +7,7 @@ public class MyAABBCollider : MyCollider
     public Vector3 localCenter;
     public Vector3 size = Vector3.one;
 	[Space(10)]
-	public bool adapatAABB;
+	public bool adaptAABB;
     public Vector3 aabbCalculatedRotation;
 
     // For quick gizmo
@@ -22,10 +22,36 @@ public class MyAABBCollider : MyCollider
 
     public void FixedUpdate()
     {
-		if (adapatAABB && aabbCalculatedRotation != transform.rotation.eulerAngles)
+		if (adaptAABB && aabbCalculatedRotation != transform.rotation.eulerAngles)
         {
             CalculateAABB();
         }
+    }
+
+    public override void CalculateInertiaTensor()
+    {
+        float sizeXCarre = transform.localScale.x * transform.localScale.x;
+        float sizeYCarre = transform.localScale.y * transform.localScale.y;
+        float sizeZCarre = transform.localScale.z * transform.localScale.z;
+
+        // box aligned inertia tensor
+        MyMatrix3x3 alignedInertiaTensor = new MyMatrix3x3(new float[,] {
+            { rb.masse * (sizeYCarre+sizeZCarre), 0.0f, 0.0f },
+            { 0.0f, rb.masse * (sizeXCarre+sizeZCarre), 0.0f },
+            { 0.0f, 0.0f, rb.masse * (sizeXCarre+sizeYCarre) } });
+
+        // Update local axis
+        Vector3 orientation = transform.rotation.eulerAngles;
+        float conversionDegRad = Mathf.PI / 180;
+
+        float thetaX = (conversionDegRad * orientation.x) % (2 * Mathf.PI);
+        float thetaY = (conversionDegRad * orientation.y) % (2 * Mathf.PI);
+        float thetaZ = (conversionDegRad * orientation.z) % (2 * Mathf.PI);
+        // Matrix YXZ else doesn't work : Ry*Rx*Rz * vect because unity is zxy order ...
+        MyMatrix3x3 rotationMatrix = MathsUtility.RotationMatrixY(thetaY) * MathsUtility.RotationMatrixX(thetaX) * MathsUtility.RotationMatrixZ(thetaZ);
+
+        inertiaTensor = rotationMatrix * alignedInertiaTensor;
+        Debug.Log(inertiaTensor);
     }
 
     public void CalculateAABB()
@@ -102,7 +128,8 @@ public class MyAABBCollider : MyCollider
             CollisionData cd = new CollisionData();
 
             cd.contactPoint = (center2 - center1) / 2;
-
+            // NEED CHANGE : detect which cube face normal is colliding
+            cd.n = Vector3.Normalize(cd.contactPoint);
             return cd;
         }
         return null;

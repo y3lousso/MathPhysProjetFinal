@@ -7,9 +7,10 @@ using UnityEngine;
 public abstract class MyCollider : MonoBehaviour {
 
 	public MyRigidBody rb;
+    public MyMatrix3x3 inertiaTensor;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 		rb = GetComponent<MyRigidBody> ();
 	}
 
@@ -24,11 +25,14 @@ public abstract class MyCollider : MonoBehaviour {
 		return null;
 	}
 
-	public abstract CollisionData isColliding (MySphereCollider c);
+    public abstract void CalculateInertiaTensor();
+
+    public abstract CollisionData isColliding (MySphereCollider c);
 	public abstract CollisionData isColliding (MyAABBCollider c);
     public abstract CollisionData isColliding (MyOBBCollider c);
 }
 
 public class CollisionData {
 	public Vector3 contactPoint;
+    public Vector3 n; // normal vector
 }

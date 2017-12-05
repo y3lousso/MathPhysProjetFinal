@@ -31,6 +31,34 @@ public class MyOBBCollider : MyCollider
         halfExtends.x = transform.localScale.x/2;
         halfExtends.y = transform.localScale.y/2;
         halfExtends.z = transform.localScale.z/2;
+
+        CalculateInertiaTensor();
+    }
+
+    public override void CalculateInertiaTensor()
+    {
+        float sizeXCarre = transform.localScale.x * transform.localScale.x;
+        float sizeYCarre = transform.localScale.y * transform.localScale.y;
+        float sizeZCarre = transform.localScale.z * transform.localScale.z;
+
+        // box aligned inertia tensor
+        MyMatrix3x3 alignedInertiaTensor = new MyMatrix3x3(new float[,] {
+            { rb.masse * (sizeYCarre+sizeZCarre), 0.0f, 0.0f },
+            { 0.0f, rb.masse * (sizeXCarre+sizeZCarre), 0.0f },
+            { 0.0f, 0.0f, rb.masse * (sizeXCarre+sizeYCarre) } });
+
+        // Update local axis
+        Vector3 orientation = transform.rotation.eulerAngles;
+        float conversionDegRad = Mathf.PI / 180;
+
+        float thetaX = (conversionDegRad * orientation.x) % (2 * Mathf.PI);
+        float thetaY = (conversionDegRad * orientation.y) % (2 * Mathf.PI);
+        float thetaZ = (conversionDegRad * orientation.z) % (2 * Mathf.PI);
+        // Matrix YXZ else doesn't work : Ry*Rx*Rz * vect because unity is zxy order ...
+        MyMatrix3x3 rotationMatrix = MathsUtility.RotationMatrixY(thetaY) * MathsUtility.RotationMatrixX(thetaX) * MathsUtility.RotationMatrixZ(thetaZ);
+
+        inertiaTensor = rotationMatrix * alignedInertiaTensor;
+        Debug.Log(inertiaTensor);
     }
 
     public override CollisionData isColliding(MySphereCollider c)
@@ -152,7 +180,8 @@ public class MyOBBCollider : MyCollider
 		// Since no separating axis is found, the OBBs must be intersecting
 		// Need to adjust the contact point location
 		cd.contactPoint = (c.transform.position - transform.position) / 2;
-		return cd;
+        cd.n = Vector3.Normalize(cd.contactPoint);
+        return cd;
     }
 
     public override CollisionData isColliding(MyAABBCollider c)
@@ -274,7 +303,8 @@ public class MyOBBCollider : MyCollider
 		// Since no separating axis is found, the OBBs must be intersecting
 		// Need to adjust the contact point location
 		cd.contactPoint = (c.transform.position - transform.position) / 2;
-		return cd;
+        cd.n = Vector3.Normalize(cd.contactPoint);
+        return cd;
     }
 
     public override CollisionData isColliding(MyOBBCollider c)
@@ -392,6 +422,7 @@ public class MyOBBCollider : MyCollider
         // Since no separating axis is found, the OBBs must be intersecting
         // Need to adjust the contact point location
 		cd.contactPoint = (c.transform.position - transform.position) / 2;
+        cd.n = Vector3.Normalize(cd.contactPoint);
         return cd;
     }
 
