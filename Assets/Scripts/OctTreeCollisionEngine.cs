@@ -151,7 +151,7 @@ public class OctTreeCollisionEngine : CollisionEngine {
 	/*
 	 * Draw the Quadtree limits
 	 */
-	void OnDrawGizmos() {
+	protected void OnDrawGizmos() {
 		if (childrens == null || childrens.Length == 0) {
 			Gizmos.color = new Color (1.0f, 0f, 0f, 0.6f);
 

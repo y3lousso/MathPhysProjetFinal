@@ -58,7 +58,7 @@ public class MyOBBCollider : MyCollider
         MyMatrix3x3 rotationMatrix = MathsUtility.RotationMatrixY(thetaY) * MathsUtility.RotationMatrixX(thetaX) * MathsUtility.RotationMatrixZ(thetaZ);
 
         inertiaTensor = rotationMatrix * alignedInertiaTensor;
-        Debug.Log(inertiaTensor);
+        //Debug.Log(inertiaTensor);
     }
 
     public override CollisionData isColliding(MySphereCollider c)

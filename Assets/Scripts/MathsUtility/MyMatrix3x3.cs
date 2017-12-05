@@ -28,7 +28,7 @@ public class MyMatrix3x3 : MyMatrix
     { 0.0f, 0.0f, 1.0f } });
     }
 
-    public void Invert()
+    public MyMatrix3x3 Invert()
     {
         float det = this.matrix[0, 0] * (this.matrix[1, 1] * this.matrix[2, 2] - this.matrix[2, 1] * this.matrix[1, 2]) -
          this.matrix[0, 1] * (this.matrix[1, 0] * this.matrix[2, 2] - this.matrix[1, 2] * this.matrix[2, 0]) +
@@ -48,13 +48,13 @@ public class MyMatrix3x3 : MyMatrix
         inverse[2, 1] = (this.matrix[2, 0] * this.matrix[0, 1] - this.matrix[0, 0] * this.matrix[2, 1]) * invdet;
         inverse[2, 2] = (this.matrix[0, 0] * this.matrix[1, 1] - this.matrix[1, 0] * this.matrix[0, 1]) * invdet;
 
-        this.matrix = inverse;
+        return new MyMatrix3x3(inverse);
     }
 
-    public static Vector3 operator *(MyMatrix3x3 MyMatrix3x3, Vector3 v)
+    public static MyVector3 operator *(MyMatrix3x3 MyMatrix3x3, MyVector3 v)
     {
         float[,] m = MyMatrix3x3.matrix;
-        return new Vector3(
+        return new MyVector3(
             m[0, 0] * v.x + m[0, 1] * v.y + m[0, 2] * v.z,
             m[1, 0] * v.x + m[1, 1] * v.y + m[1, 2] * v.z,
             m[2, 0] * v.x + m[2, 1] * v.y + m[2, 2] * v.z);

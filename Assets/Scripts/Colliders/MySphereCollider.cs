@@ -10,12 +10,12 @@ public class MySphereCollider : MyCollider {
     public override void CalculateInertiaTensor()
     {
         float rCarre = transform.localScale.x * transform.localScale.x;
-        float J = (2f / 5) * rb.masse * rCarre; 
+        float J = (2f / 5) * rb.masse * rCarre;
 
-        inertiaTensor.matrix = new float[,] {
+        inertiaTensor = new MyMatrix3x3( new float[,] {
             { J, 0.0f, 0.0f },
             { 0.0f, J, 0.0f },
-            { 0.0f, 0.0f, J } };
+            { 0.0f, 0.0f, J } });
     }
 
     public override CollisionData isColliding (MySphereCollider c) {
