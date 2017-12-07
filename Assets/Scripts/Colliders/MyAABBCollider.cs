@@ -4,25 +4,25 @@ using UnityEngine;
 
 public class MyAABBCollider : MyCollider
 {
-    public Vector3 localCenter;
-    public Vector3 size = Vector3.one;
+	public MyVector3 localCenter;
+	public MyVector3 size = MyVector3.One;
 	[Space(10)]
 	public bool adaptAABB;
-    public Vector3 aabbCalculatedRotation;
+	public MyVector3 aabbCalculatedRotation;
 
     // For quick gizmo
-	private Vector3 point1;
-	private Vector3 point2;
-	private Vector3 point3;
-	private Vector3 point4;
-	private Vector3 point5;
-	private Vector3 point6;
-	private Vector3 point7;
-	private Vector3 point8;
+	private MyVector3 point1 = MyVector3.Zero;
+	private MyVector3 point2 = MyVector3.Zero;
+	private MyVector3 point3 = MyVector3.Zero;
+	private MyVector3 point4 = MyVector3.Zero;
+	private MyVector3 point5 = MyVector3.Zero;
+	private MyVector3 point6 = MyVector3.Zero;
+	private MyVector3 point7 = MyVector3.Zero;
+	private MyVector3 point8 = MyVector3.Zero;
 
     public void FixedUpdate()
     {
-		if (adaptAABB && aabbCalculatedRotation != transform.rotation.eulerAngles)
+		if (adaptAABB && aabbCalculatedRotation != myTransform.rotation)
         {
             CalculateAABB();
         }
@@ -30,9 +30,9 @@ public class MyAABBCollider : MyCollider
 
     public override void CalculateInertiaTensor()
     {
-        float sizeXCarre = transform.localScale.x * transform.localScale.x;
-        float sizeYCarre = transform.localScale.y * transform.localScale.y;
-        float sizeZCarre = transform.localScale.z * transform.localScale.z;
+		float sizeXCarre = myTransform.localScale.x * myTransform.localScale.x;
+		float sizeYCarre = myTransform.localScale.y * myTransform.localScale.y;
+		float sizeZCarre = myTransform.localScale.z * myTransform.localScale.z;
 
         // box aligned inertia tensor
         MyMatrix3x3 alignedInertiaTensor = new MyMatrix3x3(new float[,] {
@@ -41,7 +41,7 @@ public class MyAABBCollider : MyCollider
             { 0.0f, 0.0f, rb.masse * (sizeXCarre+sizeYCarre) } });
 
         // Update local axis
-        Vector3 orientation = transform.rotation.eulerAngles;
+		MyVector3 orientation = transform.rotation.eulerAngles;
         float conversionDegRad = Mathf.PI / 180;
 
         float thetaX = (conversionDegRad * orientation.x) % (2 * Mathf.PI);
@@ -51,12 +51,11 @@ public class MyAABBCollider : MyCollider
         MyMatrix3x3 rotationMatrix = MathsUtility.RotationMatrixY(thetaY) * MathsUtility.RotationMatrixX(thetaX) * MathsUtility.RotationMatrixZ(thetaZ);
 
         inertiaTensor = rotationMatrix * alignedInertiaTensor;
-        Debug.Log(inertiaTensor);
     }
 
     public void CalculateAABB()
     {
-        Vector3 orientation = transform.rotation.eulerAngles;
+		MyVector3 orientation = myTransform.rotation;
         float conversionDegRad = Mathf.PI / 180;
 
         float thetaX = (conversionDegRad * orientation.x) % (2 * Mathf.PI);
@@ -66,14 +65,14 @@ public class MyAABBCollider : MyCollider
         // Matrix YXZ else doesn't work : Ry*Rx*Rz * vect because unity is zxy order ...
         MyMatrix3x3 rotationMatrix = MathsUtility.RotationMatrixY(thetaY) * MathsUtility.RotationMatrixX(thetaX) *MathsUtility.RotationMatrixZ(thetaZ);
        
-        point1 = rotationMatrix * new MyVector3(transform.localScale.x, transform.localScale.y , transform.localScale.z )/2;
-        point2 = rotationMatrix * new MyVector3(transform.localScale.x , transform.localScale.y , -transform.localScale.z )/2;
-        point3 = rotationMatrix * new MyVector3(transform.localScale.x , -transform.localScale.y , transform.localScale.z )/2;
-        point4 = rotationMatrix * new MyVector3(transform.localScale.x , -transform.localScale.y , -transform.localScale.z )/2;
-        point5 = rotationMatrix * new MyVector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z)/2;
-        point6 = rotationMatrix * new MyVector3(-transform.localScale.x, transform.localScale.y, -transform.localScale.z)/2;
-        point7 = rotationMatrix * new MyVector3(-transform.localScale.x, -transform.localScale.y, transform.localScale.z)/2;
-        point8 = rotationMatrix * new MyVector3(-transform.localScale.x, -transform.localScale.y, -transform.localScale.z)/2;
+		point1 = rotationMatrix * new MyVector3(myTransform.localScale.x, myTransform.localScale.y , myTransform.localScale.z )/2;
+		point2 = rotationMatrix * new MyVector3(myTransform.localScale.x , myTransform.localScale.y , -myTransform.localScale.z )/2;
+		point3 = rotationMatrix * new MyVector3(myTransform.localScale.x , -myTransform.localScale.y , myTransform.localScale.z )/2;
+		point4 = rotationMatrix * new MyVector3(myTransform.localScale.x , -myTransform.localScale.y , -myTransform.localScale.z )/2;
+		point5 = rotationMatrix * new MyVector3(-myTransform.localScale.x, myTransform.localScale.y, myTransform.localScale.z)/2;
+		point6 = rotationMatrix * new MyVector3(-myTransform.localScale.x, myTransform.localScale.y, -myTransform.localScale.z)/2;
+		point7 = rotationMatrix * new MyVector3(-myTransform.localScale.x, -myTransform.localScale.y, myTransform.localScale.z)/2;
+		point8 = rotationMatrix * new MyVector3(-myTransform.localScale.x, -myTransform.localScale.y, -myTransform.localScale.z)/2;
 
         
 
@@ -88,7 +87,7 @@ public class MyAABBCollider : MyCollider
 		size.y = Mathf.Lerp(size.y, maxY + Mathf.Abs(minY), Time.deltaTime);
 		size.z = Mathf.Lerp(size.z, maxZ + Mathf.Abs(minZ), Time.deltaTime);
 
-        aabbCalculatedRotation = transform.rotation.eulerAngles;
+		aabbCalculatedRotation = myTransform.rotation;
     }
 
 
@@ -98,6 +97,7 @@ public class MyAABBCollider : MyCollider
 
 		if (cd != null) {
 			cd.contactPoint = -cd.contactPoint;
+			cd.n = -cd.n;
 		}
 
 		return cd;
@@ -105,8 +105,8 @@ public class MyAABBCollider : MyCollider
 
     public override CollisionData isColliding(MyAABBCollider c)
     {
-        Vector3 center1 = transform.position + localCenter;
-        Vector3 center2 = c.transform.position + c.localCenter;
+		MyVector3 center1 = myTransform.position + localCenter;
+		MyVector3 center2 = c.myTransform.position + c.localCenter;
 
         bool overlapX = center1.x + size.x / 2 <= center2.x + c.size.x / 2 && center1.x + size.x / 2 >= center2.x - c.size.x / 2;
         overlapX |= center1.x - size.x / 2 <= center2.x + c.size.x / 2 && center1.x - size.x / 2 >= center2.x - c.size.x / 2;
@@ -141,29 +141,32 @@ public class MyAABBCollider : MyCollider
 
 		if (cd != null) {
 			cd.contactPoint = -cd.contactPoint;
+			cd.n = -cd.n;
 		}
 
 		return cd;
     }
 
     /*
-        * Draw
-        */
-    void OnDrawGizmos()
+    * Draw
+    */
+	public override void OnDrawGizmos()
     {
+		base.OnDrawGizmos ();
+
         Gizmos.color = new Color(0f, 1f, 0f, 1f);
 
-        Gizmos.DrawWireCube(transform.position + localCenter, size);
+		Gizmos.DrawWireCube(transform.position + (Vector3)localCenter, (Vector3)size);
 
         Gizmos.color = new Color(1f, 0f, 0f, 1f);
-        Gizmos.DrawWireCube(transform.position + point1, new Vector3(.1f, .1f, .1f));
-        Gizmos.DrawWireCube(transform.position + point2, new Vector3(.1f, .1f, .1f));
-        Gizmos.DrawWireCube(transform.position + point3, new Vector3(.1f, .1f, .1f));
-        Gizmos.DrawWireCube(transform.position + point4, new Vector3(.1f, .1f, .1f));
-        Gizmos.DrawWireCube(transform.position + point5, new Vector3(.1f, .1f, .1f));
-        Gizmos.DrawWireCube(transform.position + point6, new Vector3(.1f, .1f, .1f));
-        Gizmos.DrawWireCube(transform.position + point7, new Vector3(.1f, .1f, .1f));
-        Gizmos.DrawWireCube(transform.position + point8, new Vector3(.1f, .1f, .1f));
+		Gizmos.DrawWireCube(transform.position + (Vector3)point1, new Vector3(.1f, .1f, .1f));
+		Gizmos.DrawWireCube(transform.position + (Vector3)point2, new Vector3(.1f, .1f, .1f));
+		Gizmos.DrawWireCube(transform.position + (Vector3)point3, new Vector3(.1f, .1f, .1f));
+		Gizmos.DrawWireCube(transform.position + (Vector3)point4, new Vector3(.1f, .1f, .1f));
+		Gizmos.DrawWireCube(transform.position + (Vector3)point5, new Vector3(.1f, .1f, .1f));
+		Gizmos.DrawWireCube(transform.position + (Vector3)point6, new Vector3(.1f, .1f, .1f));
+		Gizmos.DrawWireCube(transform.position + (Vector3)point7, new Vector3(.1f, .1f, .1f));
+		Gizmos.DrawWireCube(transform.position + (Vector3)point8, new Vector3(.1f, .1f, .1f));
     }
 }
 

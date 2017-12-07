@@ -180,8 +180,8 @@ public class MyOBBCollider : MyCollider
 		// Since no separating axis is found, the OBBs must be intersecting
 		// Need to adjust the contact point location
 		cd.contactPoint = (c.transform.position - transform.position) / 2;
-        cd.n = Vector3.Normalize(cd.contactPoint);
-        return cd;
+		cd.n = Vector3.Normalize(cd.contactPoint);
+		return cd;
     }
 
     public override CollisionData isColliding(MyAABBCollider c)
@@ -303,8 +303,8 @@ public class MyOBBCollider : MyCollider
 		// Since no separating axis is found, the OBBs must be intersecting
 		// Need to adjust the contact point location
 		cd.contactPoint = (c.transform.position - transform.position) / 2;
-        cd.n = Vector3.Normalize(cd.contactPoint);
-        return cd;
+		cd.n = Vector3.Normalize(cd.contactPoint);
+		return cd;
     }
 
     public override CollisionData isColliding(MyOBBCollider c)
@@ -426,8 +426,13 @@ public class MyOBBCollider : MyCollider
         return cd;
     }
 
-    public void OnDrawGizmos()
+	public override void OnDrawGizmos()
     {
+		base.OnDrawGizmos ();
+
+		localAxis = new MyVector3[] { transform.right, transform.up, transform.forward };
+		halfExtends = transform.localScale/2;
+
         Gizmos.color = new Color(1f, 0f, 0f, 1f);
         Gizmos.DrawLine(transform.position + (Vector3)localCenter, transform.position + (Vector3)localCenter + (Vector3)localAxis[0]);
         Gizmos.DrawLine(transform.position + (Vector3)localCenter, transform.position + (Vector3)localCenter + (Vector3)localAxis[1]);

@@ -2,15 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(MyTransform))]
 [RequireComponent(typeof(MyRigidBody))]
 
 public abstract class MyCollider : MonoBehaviour {
 
+	public MyTransform myTransform;
 	public MyRigidBody rb;
-    public MyMatrix3x3 inertiaTensor;
+    public MyMatrix3x3 inertiaTensor = null;
 
     // Use this for initialization
     void Start () {
+		myTransform = GetComponent<MyTransform> ();
 		rb = GetComponent<MyRigidBody> ();
 	}
 
@@ -30,9 +33,17 @@ public abstract class MyCollider : MonoBehaviour {
     public abstract CollisionData isColliding (MySphereCollider c);
 	public abstract CollisionData isColliding (MyAABBCollider c);
     public abstract CollisionData isColliding (MyOBBCollider c);
+
+	public virtual void OnDrawGizmos()
+	{
+		if (myTransform == null)
+			myTransform = GetComponent<MyTransform> ();
+		if (rb == null)
+			rb = GetComponent<MyRigidBody> ();
+	}
 }
 
 public class CollisionData {
-	public Vector3 contactPoint;
-    public Vector3 n; // normal vector
+	public MyVector3 contactPoint;
+	public MyVector3 n; // normal vector
 }

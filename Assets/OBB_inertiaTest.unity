@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -122,6 +122,7 @@ GameObject:
   - component: {fileID: 765962099}
   - component: {fileID: 765962098}
   - component: {fileID: 765962097}
+  - component: {fileID: 765962100}
   - component: {fileID: 765962096}
   - component: {fileID: 765962095}
   m_Layer: 0
@@ -142,7 +143,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37ef9aad244ff604f8ab7bbede9e66f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 0}
+  myTransform: {fileID: 765962100}
+  rb: {fileID: 765962096}
   localCenter:
     x: 0
     y: 0
@@ -158,9 +160,9 @@ MonoBehaviour:
     y: 0
     z: 1
   halfExtends:
-    x: 0.5
-    y: 0.5
-    z: 0.5
+    x: 9.670752
+    y: 1.5
+    z: 9.663357
 --- !u!114 &765962096
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -172,15 +174,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6047881f93a004b2e9a02053447f1105, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myTransform: {fileID: 765962100}
   masse: 50
   gravity: 9.81
   useGravity: 0
   isStatic: 1
-  velocity: {x: 0, y: 0, z: 0}
-  angVelocity: {x: 0, y: 0, z: 0}
+  velocity:
+    x: 0
+    y: 0
+    z: 0
+  angVelocity:
+    x: 0
+    y: 0
+    z: 0
   forces: []
-  lastPosition: {x: 0, y: 0, z: 0}
-  lastRotation: {x: 0, y: 0, z: 0, w: 0}
+  lastPosition:
+    x: 0
+    y: 0
+    z: 0
+  lastRotation:
+    x: 0
+    y: 0
+    z: 0
 --- !u!23 &765962097
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -235,6 +250,29 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &765962100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 765962094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 411309b3955ea4b8390eed50a34df20a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  position:
+    x: -1.0670333
+    y: -2.7016873
+    z: 2.3167415
+  rotation:
+    x: -0
+    y: 0
+    z: 0
+  localScale:
+    x: 19.341503
+    y: 3
+    z: 19.326714
 --- !u!1 &1160325864
 GameObject:
   m_ObjectHideFlags: 0
@@ -245,6 +283,7 @@ GameObject:
   - component: {fileID: 1160325869}
   - component: {fileID: 1160325868}
   - component: {fileID: 1160325867}
+  - component: {fileID: 1160325870}
   - component: {fileID: 1160325866}
   - component: {fileID: 1160325865}
   m_Layer: 0
@@ -265,9 +304,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2ec0704b2d014039ac0393ede2e84a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 0}
-  localCenter: {x: 0, y: 0, z: 0}
-  radius: 0
+  myTransform: {fileID: 1160325870}
+  rb: {fileID: 1160325866}
+  localCenter:
+    x: 0
+    y: 0
+    z: 0
+  radius: 1.5
 --- !u!114 &1160325866
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -279,15 +322,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6047881f93a004b2e9a02053447f1105, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myTransform: {fileID: 1160325870}
   masse: 50
   gravity: 9.81
   useGravity: 1
   isStatic: 0
-  velocity: {x: 0, y: 0, z: 0}
-  angVelocity: {x: 0, y: 0, z: 0}
+  velocity:
+    x: 0
+    y: 0
+    z: 0
+  angVelocity:
+    x: 0
+    y: 0
+    z: 0
   forces: []
-  lastPosition: {x: 0, y: 0, z: 0}
-  lastRotation: {x: 0, y: 0, z: 0, w: 0}
+  lastPosition:
+    x: 0
+    y: 0
+    z: 0
+  lastRotation:
+    x: 0
+    y: 0
+    z: 0
 --- !u!23 &1160325867
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -342,6 +398,29 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1160325870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1160325864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 411309b3955ea4b8390eed50a34df20a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  position:
+    x: 2.27
+    y: 1.27
+    z: 9.18
+  rotation:
+    x: -0
+    y: 0
+    z: 0
+  localScale:
+    x: 3
+    y: 3
+    z: 3
 --- !u!1 &1350010034
 GameObject:
   m_ObjectHideFlags: 0
@@ -369,8 +448,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecc57075a395c4bd78dc6bfad63d5868, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resetTransformsOnCollision: 1
-  rejectionForceOnCollision: 1
   elasticityCoef: 0.5
   _objects: []
   position: {x: 0, y: 0, z: 0}
@@ -548,6 +625,7 @@ GameObject:
   - component: {fileID: 1714478742}
   - component: {fileID: 1714478741}
   - component: {fileID: 1714478740}
+  - component: {fileID: 1714478743}
   - component: {fileID: 1714478739}
   - component: {fileID: 1714478738}
   m_Layer: 0
@@ -568,25 +646,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37ef9aad244ff604f8ab7bbede9e66f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 0}
+  myTransform: {fileID: 1714478743}
+  rb: {fileID: 1714478739}
   localCenter:
     x: 0
     y: 0
     z: 0
   localAxis:
-  - x: 1
-    y: 0
-    z: 0
-  - x: 0
-    y: 1
-    z: 0
-  - x: 0
-    y: 0
-    z: 1
+  - x: 0.90804356
+    y: -0.41887575
+    z: -0.000027932227
+  - x: 0.40760922
+    y: 0.8836046
+    z: 0.23042944
+  - x: -0.09649661
+    y: -0.20925137
+    z: 0.97308904
   halfExtends:
-    x: 0.5
-    y: 0.5
-    z: 0.5
+    x: 1.5
+    y: 1.5
+    z: 1.5
 --- !u!114 &1714478739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -598,15 +677,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6047881f93a004b2e9a02053447f1105, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myTransform: {fileID: 1714478743}
   masse: 50
   gravity: 9.81
   useGravity: 1
   isStatic: 0
-  velocity: {x: 0, y: 0, z: 0}
-  angVelocity: {x: 0, y: 0, z: 0}
+  velocity:
+    x: 0
+    y: 0
+    z: 0
+  angVelocity:
+    x: 0
+    y: 0
+    z: 0
   forces: []
-  lastPosition: {x: 0, y: 0, z: 0}
-  lastRotation: {x: 0, y: 0, z: 0, w: 0}
+  lastPosition:
+    x: 0
+    y: 0
+    z: 0
+  lastRotation:
+    x: 0
+    y: 0
+    z: 0
 --- !u!23 &1714478740
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -661,6 +753,29 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 12.078001, y: -5.663, z: -25.363}
+--- !u!114 &1714478743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1714478737}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 411309b3955ea4b8390eed50a34df20a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  position:
+    x: 1.16
+    y: 8.08
+    z: 2.3167415
+  rotation:
+    x: 12.078485
+    y: 354.33676
+    z: 334.63654
+  localScale:
+    x: 3
+    y: 3
+    z: 3
 --- !u!1 &2076813716
 GameObject:
   m_ObjectHideFlags: 0
@@ -671,6 +786,7 @@ GameObject:
   - component: {fileID: 2076813721}
   - component: {fileID: 2076813720}
   - component: {fileID: 2076813719}
+  - component: {fileID: 2076813722}
   - component: {fileID: 2076813718}
   - component: {fileID: 2076813717}
   m_Layer: 0
@@ -691,25 +807,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37ef9aad244ff604f8ab7bbede9e66f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 0}
+  myTransform: {fileID: 2076813722}
+  rb: {fileID: 2076813718}
   localCenter:
     x: 0
     y: 0
     z: 0
   localAxis:
-  - x: 1
-    y: 0
-    z: 0
-  - x: 0
-    y: 1
-    z: 0
-  - x: 0
-    y: 0
-    z: 1
+  - x: 0.98380387
+    y: 0.1792483
+    z: -0.00002793409
+  - x: -0.17441824
+    y: 0.9573299
+    z: 0.23042938
+  - x: 0.041330814
+    y: -0.22669244
+    z: 0.97308904
   halfExtends:
-    x: 0.5
-    y: 0.5
-    z: 0.5
+    x: 1.5
+    y: 1.5
+    z: 1.5
 --- !u!114 &2076813718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -721,15 +838,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6047881f93a004b2e9a02053447f1105, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myTransform: {fileID: 2076813722}
   masse: 50
   gravity: 9.81
   useGravity: 1
   isStatic: 0
-  velocity: {x: 0, y: 0, z: 0}
-  angVelocity: {x: 0, y: 0, z: 0}
+  velocity:
+    x: 0
+    y: 0
+    z: 0
+  angVelocity:
+    x: 0
+    y: 0
+    z: 0
   forces: []
-  lastPosition: {x: 0, y: 0, z: 0}
-  lastRotation: {x: 0, y: 0, z: 0, w: 0}
+  lastPosition:
+    x: 0
+    y: 0
+    z: 0
+  lastRotation:
+    x: 0
+    y: 0
+    z: 0
 --- !u!23 &2076813719
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -784,3 +914,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 13.102, y: 2.4320002, z: 10.6050005}
+--- !u!114 &2076813722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2076813716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 411309b3955ea4b8390eed50a34df20a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  position:
+    x: 1.16
+    y: 3.77
+    z: 2.3167415
+  rotation:
+    x: 13.10242
+    y: 2.4321086
+    z: 10.605139
+  localScale:
+    x: 3
+    y: 3
+    z: 3

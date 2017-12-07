@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class MySphereCollider : MyCollider {
 
-	public Vector3 localCenter;
+	public MyVector3 localCenter;
 	public float radius = 1f;
 
     public override void CalculateInertiaTensor()
     {
-        float rCarre = transform.localScale.x * transform.localScale.x;
+		float rCarre = myTransform.localScale.x * myTransform.localScale.x;
         float J = (2f / 5) * rb.masse * rCarre;
 
         inertiaTensor = new MyMatrix3x3( new float[,] {
@@ -19,24 +19,24 @@ public class MySphereCollider : MyCollider {
     }
 
     public override CollisionData isColliding (MySphereCollider c) {
-		Vector3 dist = (c.transform.position + c.localCenter) - (transform.position + localCenter);
+		MyVector3 dist = (c.myTransform.position + c.localCenter) - (myTransform.position + localCenter);
 
 		if (dist.magnitude < radius + c.radius) {
 			CollisionData cd = new CollisionData();
 
 			cd.contactPoint = dist / 2;
-            cd.n = Vector3.Normalize(cd.contactPoint);
+			cd.n = cd.contactPoint.Normalize();
             return cd;
 		}
 		return null;
 	}
 
 	public override CollisionData isColliding (MyAABBCollider c) {
-		Vector3 closestPoint = localCenter - c.localCenter;
-		closestPoint.Normalize ();
+		MyVector3 closestPoint = localCenter - c.localCenter;
+		closestPoint = closestPoint.Normalize ();
 		closestPoint *= radius;
 
-		Vector3 AABBCenter = c.transform.position + c.localCenter;
+		MyVector3 AABBCenter = c.myTransform.position + c.localCenter;
 
 		bool overLapX = closestPoint.x > AABBCenter.x - c.size.x && closestPoint.x < AABBCenter.x + c.size.x;
 		bool overLapY = closestPoint.y > AABBCenter.y - c.size.y && closestPoint.y < AABBCenter.y + c.size.y;
@@ -47,7 +47,7 @@ public class MySphereCollider : MyCollider {
 
 			cd.contactPoint = (c.localCenter - localCenter) / 2;
             // NEED CHANGE : detect which cube face normal is colliding
-            cd.n = Vector3.Normalize(cd.contactPoint);
+			cd.n = cd.contactPoint.Normalize();
             return cd;
 		}
 		return null;
@@ -59,6 +59,7 @@ public class MySphereCollider : MyCollider {
 
 		if (cd != null) {
 			cd.contactPoint = -cd.contactPoint;
+			cd.n = -cd.n;
 		}
 
 		return cd;
@@ -67,9 +68,13 @@ public class MySphereCollider : MyCollider {
     /*
 	 * Draw
 	 */
-    void OnDrawGizmos() {
+	public override void OnDrawGizmos() {
+		base.OnDrawGizmos ();
+
+		radius = transform.localScale.x/2;
+
 		Gizmos.color = new Color (0f, 1f, 0f, 1f);
 
-		Gizmos.DrawWireSphere (transform.position + localCenter, radius);       
+		Gizmos.DrawWireSphere (transform.position + (Vector3)localCenter, radius);       
 	}
 }

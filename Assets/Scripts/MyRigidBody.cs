@@ -4,23 +4,27 @@ using UnityEngine;
 
 public class MyRigidBody : MonoBehaviour {
 
+	public MyTransform myTransform;
+
 	public float masse = 1f;
 
 	public float gravity = 9.81f;
 	public bool useGravity;
 	public bool isStatic;
 
-	public Vector3 velocity;
-	public Vector3 angVelocity;
+	public MyVector3 velocity;
+	public MyVector3 angVelocity;
 
-	public List<Vector3> forces = new List<Vector3>();
+	public List<MyVector3> forces = new List<MyVector3>();
 
-	public Vector3 lastPosition;
-	public Quaternion lastRotation;
+	public MyVector3 lastPosition;
+	public MyVector3 lastRotation;
 
 	void Start () {
-		lastPosition = transform.position;
-		lastRotation = transform.rotation;
+		myTransform = GetComponent<MyTransform> ();
+
+		lastPosition = myTransform.position;
+		lastRotation = myTransform.rotation;
 	}
 
 	void FixedUpdate () {
@@ -29,8 +33,8 @@ public class MyRigidBody : MonoBehaviour {
 
 		forces.Add(-velocity * 0.05f);
 
-		Vector3 sum = Vector3.zero;
-		foreach (Vector3 f in forces) {
+		MyVector3 sum = MyVector3.Zero;
+		foreach (MyVector3 f in forces) {
 			sum += f;
 		}
 
@@ -38,15 +42,20 @@ public class MyRigidBody : MonoBehaviour {
 
 		velocity += sum * (Time.fixedDeltaTime / masse);
 
-		angVelocity *= 0.8f;
+		angVelocity *= 0.95f;
+
+		lastPosition = myTransform.position;
+		lastRotation = myTransform.rotation;
 
 		if (!isStatic) {
-			lastPosition = transform.position;
-			lastRotation = transform.rotation;
-
-			transform.Translate (transform.InverseTransformDirection(velocity * Time.fixedDeltaTime));
-			transform.Rotate (angVelocity * Time.fixedDeltaTime);
+			myTransform.Translate (velocity * Time.fixedDeltaTime);
+			myTransform.Rotate (angVelocity * 360/6.28f * Time.fixedDeltaTime);
 		}
 	}
 
+	public virtual void OnDrawGizmos()
+	{
+		if (myTransform == null)
+			myTransform = GetComponent<MyTransform> ();
+	}
 }

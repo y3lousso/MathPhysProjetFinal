@@ -15,6 +15,8 @@ public class MyVector3
     public float y;
     public float z;
 
+	public float magnitude { get { return Mathf.Sqrt (x * x + y * y + z * z); } }
+
     public MyVector3()
     {
         x = 0.0f;
@@ -74,6 +76,11 @@ public class MyVector3
         return new MyVector3(v.x * scalar, v.y * scalar, v.z * scalar);
     }
 
+	public static MyVector3 operator *(float scalar, MyVector3 v)
+	{
+		return new MyVector3(v.x * scalar, v.y * scalar, v.z * scalar);
+	}
+
 	public static MyVector3 operator *(MyVector3 v1, MyVector3 v2)
 	{
 		return new MyVector3(v1.x * v2.x, v1.y * v2.y, v1.z * v2.z);
@@ -125,6 +132,11 @@ public class MyVector3
     {
         return new MyVector3(v1.y * v2.z - v1.z * v2.y, v1.z * v2.x - v1.x * v2.z, v1.x * v2.y - v1.y * v2.x);
     }
+
+	public static MyVector3 Clamp(MyVector3 v1, MyVector3 v2, MyVector3 v3)
+	{
+		return new MyVector3(Mathf.Clamp(v1.x, v2.x, v3.x), Mathf.Clamp(v1.y, v2.y, v3.y), Mathf.Clamp(v1.z, v2.z, v3.z));
+	}
 
     public float Get(int index)
     {
