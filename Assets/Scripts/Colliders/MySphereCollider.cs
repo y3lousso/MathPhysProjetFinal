@@ -75,6 +75,9 @@ public class MySphereCollider : MyCollider {
 
 		Gizmos.color = new Color (0f, 1f, 0f, 1f);
 
-		Gizmos.DrawWireSphere (transform.position + (Vector3)localCenter, radius);       
-	}
+		Gizmos.DrawWireSphere (transform.position + (Vector3)localCenter, radius);
+
+        
+
+    }
 }

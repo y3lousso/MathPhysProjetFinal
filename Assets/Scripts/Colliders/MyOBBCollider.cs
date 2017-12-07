@@ -181,7 +181,7 @@ public class MyOBBCollider : MyCollider
 		// Need to adjust the contact point location
 		cd.contactPoint = (c.transform.position - transform.position) / 2;
 		cd.n = Vector3.Normalize(cd.contactPoint);
-		return cd;
+        return cd;
     }
 
     public override CollisionData isColliding(MyAABBCollider c)
@@ -304,7 +304,7 @@ public class MyOBBCollider : MyCollider
 		// Need to adjust the contact point location
 		cd.contactPoint = (c.transform.position - transform.position) / 2;
 		cd.n = Vector3.Normalize(cd.contactPoint);
-		return cd;
+        return cd;
     }
 
     public override CollisionData isColliding(MyOBBCollider c)

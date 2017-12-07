@@ -11,8 +11,9 @@ public class MyTransform : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		transform.position = position;
-		transform.rotation = Quaternion.Euler(rotation);
-		transform.localScale = localScale;
+        transform.rotation = MathsUtility.GetQuaternionFromEulerAngle(rotation);
+        //transform.rotation = Quaternion.Euler(rotation);
+        transform.localScale = localScale;
 	}
 
 	public void OnDrawGizmos()

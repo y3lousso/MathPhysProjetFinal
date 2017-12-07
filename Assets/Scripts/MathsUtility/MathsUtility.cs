@@ -67,6 +67,15 @@ public class MathsUtility
         return result;
     }
 
+    // Input values should be degrees
+    public static Quaternion GetQuaternionFromEulerAngle(MyVector3 eulerAngles)
+    {
+        float roll = eulerAngles.x;
+        float pitch = eulerAngles.y;
+        float yaw = eulerAngles.z;
+        return GetQuaternionFromEulerAngle(roll, pitch, yaw);
+    }
+
     public static MyMatrix3x3 RotationMatrixX(float angleX)
     {
         return new MyMatrix3x3(new float[,] {

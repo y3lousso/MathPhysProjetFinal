@@ -31,7 +31,7 @@ public class MyRigidBody : MonoBehaviour {
 		if (useGravity)
 			forces.Add(new Vector3(0, -gravity * masse, 0));
 
-		forces.Add(-velocity * 0.05f);
+		//forces.Add(-velocity * masse * 0.05f);
 
 		MyVector3 sum = MyVector3.Zero;
 		foreach (MyVector3 f in forces) {
@@ -42,9 +42,21 @@ public class MyRigidBody : MonoBehaviour {
 
 		velocity += sum * (Time.fixedDeltaTime / masse);
 
-		angVelocity *= 0.95f;
+        // Tweak velocity
+        if(velocity.magnitude > 30)
+        {
+            velocity = velocity * 30f / velocity.magnitude;
+        }
 
-		lastPosition = myTransform.position;
+        angVelocity -= 0.95f * Time.fixedDeltaTime * angVelocity;
+
+        // Tweak angular velocity
+        if (angVelocity.magnitude > 10)
+        {
+            angVelocity = angVelocity * 10f / angVelocity.magnitude;
+        }
+
+        lastPosition = myTransform.position;
 		lastRotation = myTransform.rotation;
 
 		if (!isStatic) {

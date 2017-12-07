@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class CollisionEngine : MonoBehaviour {
 
-	public bool impulseResponse = true;
+    public bool impulseResponse = true;
+
+    [Range(0,1)]
     public float elasticityCoef = 0.5f;
 
-
-	public List<Transform> _objects = new List<Transform>();
+    public List<Transform> _objects = new List<Transform>();
 
 	protected virtual void Start () {
 		foreach (MyCollider c in GameObject.FindObjectsOfType<MyCollider> ())
@@ -31,7 +32,7 @@ public class CollisionEngine : MonoBehaviour {
 	protected void HandleCollision(MyCollider c1, MyCollider c2) {
 		CollisionData cd = c1.isColliding (c2);
 
-		if (cd != null) {
+        if (cd != null) {
 			// Draw contact point for debug
 			Debug.DrawLine ((Vector3)c1.myTransform.position, (Vector3)c1.myTransform.position + (Vector3)cd.n, Color.blue);
 			Debug.DrawLine ((Vector3)c2.myTransform.position, (Vector3)c2.myTransform.position - (Vector3)cd.n, Color.blue);
@@ -63,9 +64,7 @@ public class CollisionEngine : MonoBehaviour {
 
 				c1.rb.velocity -= impulsionK * cd.n / c1.rb.masse; 
 				c2.rb.velocity += impulsionK * cd.n / c2.rb.masse;
-				//Debug.Log(c1.inertiaTensor);
-				//Debug.Log(c1.inertiaTensor.Invert());
-				c1.rb.angVelocity -= (c1.inertiaTensor.Invert () * MyVector3.CrossProduct (radius1 * impulsionK, cd.n));
+				c1.rb.angVelocity += (c1.inertiaTensor.Invert () * MyVector3.CrossProduct (radius1 * impulsionK, cd.n));
 				c2.rb.angVelocity += (c2.inertiaTensor.Invert () * MyVector3.CrossProduct (radius2 * impulsionK, cd.n));
 			} else {
             	// Estimate resulting velocities
@@ -76,13 +75,9 @@ public class CollisionEngine : MonoBehaviour {
 				c1.rb.angVelocity = MyVector3.CrossProduct (cd.contactPoint, c1.rb.velocity * c1.rb.masse) * 360/6.28f;
 				c2.rb.angVelocity = MyVector3.CrossProduct (-cd.contactPoint, c2.rb.velocity * c2.rb.masse) * 360/6.28f;
 
-				// Set velocity direction
-				Vector3 velDir = cd.contactPoint;
-				velDir.Normalize ();
-
 				// Apply velocity
-				c1.rb.velocity = vi * -velDir;
-				c2.rb.velocity = vj * velDir;
+				c1.rb.velocity = vi * cd.n;
+				c2.rb.velocity = vj * -cd.n;
 			}
 
             // tranfer gravity on contact otherwise stacked object won't fall if bottom one has no gravity
