@@ -7,6 +7,12 @@ public class MyTransform : MonoBehaviour {
 	public MyVector3 position;
 	public MyVector3 rotation;
 	public MyVector3 localScale;
+
+	void Start () {
+		position = transform.position;
+		rotation = transform.rotation.eulerAngles;
+		localScale = transform.localScale;
+	}
 	
 	// Update is called once per frame
 	void Update () {

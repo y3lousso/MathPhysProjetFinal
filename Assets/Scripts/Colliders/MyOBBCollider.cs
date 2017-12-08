@@ -32,7 +32,7 @@ public class MyOBBCollider : MyCollider
         halfExtends.y = transform.localScale.y/2;
         halfExtends.z = transform.localScale.z/2;
 
-        CalculateInertiaTensor();
+        // CalculateInertiaTensor();
     }
 
     public override void CalculateInertiaTensor()
