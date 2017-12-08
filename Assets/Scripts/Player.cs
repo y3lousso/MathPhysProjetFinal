@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+public enum Ammo {Ball, AABB, OBB};
+
 public class Player : MonoBehaviour {
 
 	public CollisionEngine colEngine;
 
 	public float speed = 20f;
+	public Ammo ammo = Ammo.OBB;
 
 	private float lastShoot;
 
@@ -33,17 +36,34 @@ public class Player : MonoBehaviour {
 		if (Input.GetKey (KeyCode.R))
 			SceneManager.LoadScene (SceneManager.GetActiveScene().name);
 
+		if (Input.GetKey (KeyCode.Escape))
+			SceneManager.LoadScene ("Menu");
+
 		if (Input.GetKey (KeyCode.Space) && Time.realtimeSinceStartup - lastShoot > 0.3f) {
 			lastShoot = Time.realtimeSinceStartup;
 
+			GameObject go;
 
-			GameObject go = GameObject.CreatePrimitive(PrimitiveType.Cube);
+			switch(ammo) {
+			case Ammo.Ball:
+				go = GameObject.CreatePrimitive (PrimitiveType.Sphere);
+				go.AddComponent<MySphereCollider> ();
+				break;
+			case Ammo.AABB:
+				go = GameObject.CreatePrimitive (PrimitiveType.Cube);
+				MyAABBCollider col = go.AddComponent<MyAABBCollider> ();
+				col.adaptAABB = true;
+				break;
+			default:
+				go = GameObject.CreatePrimitive (PrimitiveType.Cube);
+				go.AddComponent<MyOBBCollider> ();
+				break;
+			}
+
 
 			go.transform.position = Camera.main.transform.position;
 
-			go.AddComponent<MyTransform> ();
-			MyRigidBody rb = go.AddComponent<MyRigidBody> ();
-			go.AddComponent<MyOBBCollider> ();
+			MyRigidBody rb = go.GetComponent<MyRigidBody> ();
 
 			rb.velocity = -go.transform.position * Random.Range (0.5f, 0.8f);
 			rb.angVelocity = MyVector3.Zero;

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MySphereCollider : MyCollider {
 
-	public MyVector3 localCenter;
+	public MyVector3 localCenter = MyVector3.Zero;
 	public float radius = 1f;
 
     public override void CalculateInertiaTensor()

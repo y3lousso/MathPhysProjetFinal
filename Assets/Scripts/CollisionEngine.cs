@@ -22,8 +22,9 @@ public class CollisionEngine : MonoBehaviour {
 	// Update is called once per frame
 	protected virtual void FixedUpdate () {
 		for (int i = 0 ; i < _objects.Count ; i++) {
+			MyCollider ci = _objects [i].GetComponent<MyCollider> ();
 			for (int j = i+1 ; j < _objects.Count ; j++) {
-				HandleCollision (_objects [i].GetComponent<MyCollider>(), _objects [j].GetComponent<MyCollider>());
+				HandleCollision (ci, _objects [j].GetComponent<MyCollider>());
 			}
 		}
 	}
@@ -50,24 +51,21 @@ public class CollisionEngine : MonoBehaviour {
 				MyVector3 deltaVelocityAtImpactPoint = v1 - v2;
 
 				float impulsionKNumerator = (elasticityCoef + 1) * MyVector3.DotProduct (deltaVelocityAtImpactPoint, cd.n);
-				float denominatorMasse = /*cd.n */ ((1 / c1.rb.masse) + (1 / c2.rb.masse));
-				//MyVector3 denominatorInertie1 = MyVector3.CrossProduct (c1.inertiaTensor.Invert () * MyVector3.CrossProduct (radius1, cd.n), radius1);
-				//MyVector3 denominatorInertie2 = MyVector3.CrossProduct (c2.inertiaTensor.Invert () * MyVector3.CrossProduct (radius2, cd.n), radius2);
+				MyVector3 denominatorMasse = cd.n * ((1 / c1.rb.masse) + (1 / c2.rb.masse));
+				MyVector3 denominatorInertie1 = MyVector3.CrossProduct (c1.inertiaTensor.Invert () * MyVector3.CrossProduct (radius1, cd.n), radius1);
+				MyVector3 denominatorInertie2 = MyVector3.CrossProduct (c2.inertiaTensor.Invert () * MyVector3.CrossProduct (radius2, cd.n), radius2);
 
-				//float impulsionKDenominator = MyVector3.DotProduct (denominatorMasse + denominatorInertie1 + denominatorInertie2, cd.n);
-				float impulsionKDenominator = denominatorMasse * MyVector3.DotProduct (cd.n, cd.n);
-
+				float impulsionKDenominator = MyVector3.DotProduct (denominatorMasse + denominatorInertie1 + denominatorInertie2, cd.n);
 				if (impulsionKDenominator == 0)
 					return;
 
 				float impulsionK = impulsionKNumerator / impulsionKDenominator;
 
-				c1.rb.velocity -= impulsionK * cd.n / c1.rb.masse; 
-				c2.rb.velocity += impulsionK * cd.n / c2.rb.masse;
-				//Debug.Log(c1.inertiaTensor);
-				//Debug.Log(c1.inertiaTensor.Invert());
-				c1.rb.angVelocity -= (c1.inertiaTensor.Invert () * MyVector3.CrossProduct (radius1 * impulsionK, cd.n));
-				c2.rb.angVelocity += (c2.inertiaTensor.Invert () * MyVector3.CrossProduct (radius2 * impulsionK, cd.n));
+				c1.rb.velocity -= Mathf.Abs(impulsionK) * cd.n / c1.rb.masse; 
+				c2.rb.velocity += Mathf.Abs(impulsionK) * cd.n / c2.rb.masse;
+
+				c1.rb.angVelocity -= (c1.inertiaTensor.Invert () * MyVector3.CrossProduct (radius1 * Mathf.Abs(impulsionK), cd.n)) * 360/6.28f;
+				c2.rb.angVelocity += (c2.inertiaTensor.Invert () * MyVector3.CrossProduct (radius2 * Mathf.Abs(impulsionK), cd.n)) * 360/6.28f;
 			} else {
             	// Estimate resulting velocities
 	            float vi = (c1.rb.velocity.magnitude * (c1.rb.masse - c2.rb.masse) + (c2.rb.velocity.magnitude * 2 * c2.rb.masse) / (c1.rb.masse + c2.rb.masse));

@@ -152,7 +152,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecc57075a395c4bd78dc6bfad63d5868, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  elasticityCoef: 1
+  impulseResponse: 1
+  elasticityCoef: 0.5
   _objects: []
   position: {x: 0, y: 0, z: 0}
   size: {x: 30, y: 30, z: 30}

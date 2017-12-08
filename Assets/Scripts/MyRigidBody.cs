@@ -49,7 +49,7 @@ public class MyRigidBody : MonoBehaviour {
 
 		if (!isStatic) {
 			myTransform.Translate (velocity * Time.fixedDeltaTime);
-			myTransform.Rotate (angVelocity * 360/6.28f * Time.fixedDeltaTime);
+			myTransform.Rotate (angVelocity * Time.fixedDeltaTime);
 		}
 	}
 

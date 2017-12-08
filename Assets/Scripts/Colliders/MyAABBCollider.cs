@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class MyAABBCollider : MyCollider
 {
-	public MyVector3 localCenter;
+	public MyVector3 localCenter = MyVector3.Zero;
 	public MyVector3 size = MyVector3.One;
 	[Space(10)]
-	public bool adaptAABB;
+	public bool adaptAABB = true;
 	public MyVector3 aabbCalculatedRotation;
 
     // For quick gizmo

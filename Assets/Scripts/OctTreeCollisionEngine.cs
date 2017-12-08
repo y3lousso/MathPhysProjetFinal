@@ -89,17 +89,15 @@ public class OctTreeCollisionEngine : CollisionEngine {
 		} 
 		// Update objects collisions
 		for (int i = 0 ; i < _objects.Count ; i++) { 
+			MyCollider ci = _objects [i].GetComponent<MyCollider> ();
+
 			for (int j = i+1 ; j < _objects.Count ; j++) { 
-				HandleCollision (_objects[i].GetComponent<MyCollider>(), _objects[j].GetComponent<MyCollider>());
+				HandleCollision (ci, _objects[j].GetComponent<MyCollider>());
 			}
 
-			if (childrens != null && childrens.Length > 0) {
-				for (int k = 0; k < 8; k++) {
-					for (int j = i+1 ; j < childrens [k]._objects.Count ; j++) { 
-						HandleCollision (_objects[i].GetComponent<MyCollider>(), childrens [k]._objects[j].GetComponent<MyCollider>());
-					}
-				}
-			} 
+			for (int j = 0 ; parent != null && j < parent._objects.Count ; j++) { 
+				HandleCollision (ci, parent._objects[j].GetComponent<MyCollider>());
+			}
 		}
 
 		// Handle object leaving uncertainty zone
