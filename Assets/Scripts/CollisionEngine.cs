@@ -44,18 +44,19 @@ public class CollisionEngine : MonoBehaviour {
 					c2.CalculateInertiaTensor ();
 
 				MyVector3 radius1 = cd.contactPoint - c1.myTransform.position;
-				MyVector3 v1 = c1.rb.velocity + c1.rb.angVelocity * radius1.Magnitude ();
+				MyVector3 v1 = c1.rb.velocity;// + c1.rb.angVelocity * radius1.Magnitude ();
 				MyVector3 radius2 = cd.contactPoint - c2.myTransform.position;
-				MyVector3 v2 = c2.rb.velocity + c2.rb.angVelocity * radius2.Magnitude ();
+				MyVector3 v2 = c2.rb.velocity;// + c2.rb.angVelocity * radius2.Magnitude ();
 
 				MyVector3 deltaVelocityAtImpactPoint = v1 - v2;
 
 				float impulsionKNumerator = (elasticityCoef + 1) * MyVector3.DotProduct (deltaVelocityAtImpactPoint, cd.n);
-				MyVector3 denominatorMasse = cd.n * ((1 / c1.rb.masse) + (1 / c2.rb.masse));
-				MyVector3 denominatorInertie1 = MyVector3.CrossProduct (c1.inertiaTensor.Invert () * MyVector3.CrossProduct (radius1, cd.n), radius1);
-				MyVector3 denominatorInertie2 = MyVector3.CrossProduct (c2.inertiaTensor.Invert () * MyVector3.CrossProduct (radius2, cd.n), radius2);
+				float denominatorMasse = /*cd.n */ ((1 / c1.rb.masse) + (1 / c2.rb.masse));
+				//MyVector3 denominatorInertie1 = MyVector3.CrossProduct (c1.inertiaTensor.Invert () * MyVector3.CrossProduct (radius1, cd.n), radius1);
+				//MyVector3 denominatorInertie2 = MyVector3.CrossProduct (c2.inertiaTensor.Invert () * MyVector3.CrossProduct (radius2, cd.n), radius2);
 
-				float impulsionKDenominator = MyVector3.DotProduct (denominatorMasse + denominatorInertie1 + denominatorInertie2, cd.n);
+				//float impulsionKDenominator = MyVector3.DotProduct (denominatorMasse + denominatorInertie1 + denominatorInertie2, cd.n);
+				float impulsionKDenominator = denominatorMasse * MyVector3.DotProduct (cd.n, cd.n);
 
 				if (impulsionKDenominator == 0)
 					return;

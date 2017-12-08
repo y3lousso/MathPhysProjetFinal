@@ -32,7 +32,7 @@ public class MyOBBCollider : MyCollider
         halfExtends.y = transform.localScale.y/2;
         halfExtends.z = transform.localScale.z/2;
 
-        CalculateInertiaTensor();
+        // CalculateInertiaTensor();
     }
 
     public override void CalculateInertiaTensor()
@@ -309,7 +309,7 @@ public class MyOBBCollider : MyCollider
 
     public override CollisionData isColliding(MyOBBCollider c)
     {
-        float ra, rb;
+        float ra, rb, value;
         MyMatrix3x3 R = new MyMatrix3x3();
         MyMatrix3x3 AbsR = new MyMatrix3x3();
 
@@ -339,7 +339,7 @@ public class MyOBBCollider : MyCollider
         {
             for (int j = 0; j < 3; j++)
             {
-                AbsR.matrix[i, j] = Mathf.Abs(R.matrix[i, j]) + epsilon;
+				AbsR.matrix[i, j] = (R.matrix[i, j] < 0 ? -R.matrix[i, j] : R.matrix[i, j]) + epsilon;
             }
         }
 
@@ -348,10 +348,9 @@ public class MyOBBCollider : MyCollider
         {
             ra = halfExtends.Get(i);
             rb = c.halfExtends.Get(i) * AbsR.matrix[i,0] + c.halfExtends.Get(1) * AbsR.matrix[i,1] + c.halfExtends.Get(2) * AbsR.matrix[i, 2];
-            if (Mathf.Abs(translationLocalVector.Get(i)) > ra + rb)
-            {
-                return null;
-            }
+			value = translationLocalVector.Get(i);
+			if ((value < 0 ? -value : value) > ra + rb)
+				return null;
         }
 
         // Test c local axis (X2, Y2, Z2)
@@ -359,65 +358,74 @@ public class MyOBBCollider : MyCollider
         {
             ra = halfExtends.Get(i) * AbsR.matrix[i, 0] + halfExtends.Get(1) * AbsR.matrix[i, 1] + halfExtends.Get(2) * AbsR.matrix[i, 2];
             rb = c.halfExtends.Get(i);
-            if (Mathf.Abs(translationLocalVector.Get(0) * R.matrix[0, i] + translationLocalVector.Get(1) * R.matrix[1, i] + translationLocalVector.Get(2) * R.matrix[2, i]) > ra + rb)
-            {
-                return null;
-            }
+			value = translationLocalVector.Get(0) * R.matrix[0, i] + translationLocalVector.Get(1) * R.matrix[1, i] + translationLocalVector.Get(2) * R.matrix[2, i];
+			if ((value < 0 ? -value : value) > ra + rb)
+				return null;
         }
 
         // Test axis L = A0 x B0
         ra = halfExtends.Get(1) * AbsR.matrix[2, 0] + halfExtends.Get(2) * AbsR.matrix[1, 0];
         rb = c.halfExtends.Get(1) * AbsR.matrix[0, 2] + c.halfExtends.Get(2) * AbsR.matrix[0, 1];
-        if (Mathf.Abs(translationLocalVector.Get(2) * R.matrix[1, 0] - translationLocalVector.Get(1) * R.matrix[2, 0]) > ra + rb)
-            return null;
+		value = translationLocalVector.Get(2) * R.matrix[1, 0] - translationLocalVector.Get(1) * R.matrix[2, 0];
+		if ((value < 0 ? -value : value) > ra + rb)
+			return null;
 
         // Test axis L = A0 x B1
         ra = halfExtends.Get(1) * AbsR.matrix[2, 1] + halfExtends.Get(2) * AbsR.matrix[1, 1];
         rb = c.halfExtends.Get(0) * AbsR.matrix[0, 2] + c.halfExtends.Get(2) * AbsR.matrix[0, 0];
-        if (Mathf.Abs(translationLocalVector.Get(2) * R.matrix[1, 1] - translationLocalVector.Get(1) * R.matrix[2, 1]) > ra + rb)
-            return null;
+		value = translationLocalVector.Get(2) * R.matrix[1, 1] - translationLocalVector.Get(1) * R.matrix[2, 1];
+		if ((value < 0 ? -value : value) > ra + rb)
+			return null;
 
         // Test axis L = A0 x B2
         ra = halfExtends.Get(1) * AbsR.matrix[2, 2] + halfExtends.Get(2) * AbsR.matrix[1, 2];
         rb = c.halfExtends.Get(0) * AbsR.matrix[0, 1] + c.halfExtends.Get(1) * AbsR.matrix[0, 0];
-        if (Mathf.Abs(translationLocalVector.Get(2) * R.matrix[1, 2] - translationLocalVector.Get(1) * R.matrix[2, 2]) > ra + rb)
-            return null;
+		value = translationLocalVector.Get(2) * R.matrix[1, 2] - translationLocalVector.Get(1) * R.matrix[2, 2];
+		if ((value < 0 ? -value : value) > ra + rb)
+			return null;
 
         // Test axis L = A1 x B0
         ra = halfExtends.Get(0) * AbsR.matrix[2, 0] + halfExtends.Get(2) * AbsR.matrix[0, 0];
         rb = c.halfExtends.Get(1) * AbsR.matrix[1, 2] + c.halfExtends.Get(2) * AbsR.matrix[1, 1];
-        if (Mathf.Abs(translationLocalVector.Get(0) * R.matrix[2, 0] - translationLocalVector.Get(2) * R.matrix[0, 0]) > ra + rb)
-            return null;
+		value = translationLocalVector.Get(0) * R.matrix[2, 0] - translationLocalVector.Get(2) * R.matrix[0, 0];
+		if ((value < 0 ? -value : value) > ra + rb)
+			return null;
 
         // Test axis L = A1 x B1
         ra = halfExtends.Get(0) * AbsR.matrix[2, 1] + halfExtends.Get(2) * AbsR.matrix[0, 1];
         rb = c.halfExtends.Get(0) * AbsR.matrix[1, 2] + c.halfExtends.Get(2) * AbsR.matrix[1, 0];
-        if (Mathf.Abs(translationLocalVector.Get(0) * R.matrix[2, 1] - translationLocalVector.Get(2) * R.matrix[0, 1]) > ra + rb)
-            return null;
+		value = translationLocalVector.Get(0) * R.matrix[2, 1] - translationLocalVector.Get(2) * R.matrix[0, 1];
+		if ((value < 0 ? -value : value) > ra + rb)
+			return null;
 
         // Test axis L = A1 x B2
         ra = halfExtends.Get(0) * AbsR.matrix[2, 2] + halfExtends.Get(2) * AbsR.matrix[0, 2];
         rb = c.halfExtends.Get(0) * AbsR.matrix[1, 1] + c.halfExtends.Get(1) * AbsR.matrix[1, 0];
-        if (Mathf.Abs(translationLocalVector.Get(0) * R.matrix[2, 2] - translationLocalVector.Get(2) * R.matrix[0, 2]) > ra + rb)
-            return null;
+		value = translationLocalVector.Get(0) * R.matrix[2, 2] - translationLocalVector.Get(2) * R.matrix[0, 2];
+		if ((value < 0 ? -value : value) > ra + rb)
+			return null;
 
         // Test axis L = A2 x B0
         ra = halfExtends.Get(0) * AbsR.matrix[1, 0] + halfExtends.Get(1) * AbsR.matrix[0, 0];
         rb = c.halfExtends.Get(1) * AbsR.matrix[2, 2] + c.halfExtends.Get(2) * AbsR.matrix[2, 1];
-        if (Mathf.Abs(translationLocalVector.Get(1) * R.matrix[0, 0] - translationLocalVector.Get(0) * R.matrix[1, 0]) > ra + rb)
-            return null;
+		value = translationLocalVector.Get(1) * R.matrix[0, 0] - translationLocalVector.Get(0) * R.matrix[1, 0];
+		if ((value < 0 ? -value : value) > ra + rb)
+			return null;
 
         // Test axis L = A2 x B1
         ra = halfExtends.Get(0) * AbsR.matrix[1, 1] + halfExtends.Get(1) * AbsR.matrix[0, 1];
         rb = c.halfExtends.Get(0) * AbsR.matrix[2, 2] + c.halfExtends.Get(2) * AbsR.matrix[2, 0];
-        if (Mathf.Abs(translationLocalVector.Get(1) * R.matrix[0, 1] - translationLocalVector.Get(0) * R.matrix[1, 1]) > ra + rb)
-            return null;
+		value = translationLocalVector.Get (1) * R.matrix [0, 1] - translationLocalVector.Get (0) * R.matrix [1, 1];
+		if ((value < 0 ? -value : value) > ra + rb)
+			return null;
 
         // Test axis L = A2 x B2
         ra = halfExtends.Get(0) * AbsR.matrix[1, 2] + halfExtends.Get(1) * AbsR.matrix[0, 2];
         rb = c.halfExtends.Get(0) * AbsR.matrix[2, 1] + c.halfExtends.Get(1) * AbsR.matrix[2, 0];
-        if (Mathf.Abs(translationLocalVector.Get(1) * R.matrix[0, 2] - translationLocalVector.Get(0) * R.matrix[1, 2]) > ra + rb)
-            return null;
+
+		value = translationLocalVector.Get (1) * R.matrix [0, 2] - translationLocalVector.Get (0) * R.matrix [1, 2];
+		if ((value < 0 ? -value : value) > ra + rb)
+		    return null;
 
         // Since no separating axis is found, the OBBs must be intersecting
         // Need to adjust the contact point location
