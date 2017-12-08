@@ -523,6 +523,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97243c0a0e2634ecab138b5dce419456, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  impulseResponse: 1
   elasticityCoef: 0.5
   _objects: []
 --- !u!4 &1363933022

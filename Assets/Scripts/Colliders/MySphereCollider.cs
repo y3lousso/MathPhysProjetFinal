@@ -32,20 +32,21 @@ public class MySphereCollider : MyCollider {
 	}
 
 	public override CollisionData isColliding (MyAABBCollider c) {
-		MyVector3 closestPoint = localCenter - c.localCenter;
-		closestPoint = closestPoint.Normalize ();
-		closestPoint *= radius;
+		MyVector3 closestPoint = (c.myTransform.position + c.localCenter) - (myTransform.position + localCenter);
+		closestPoint = myTransform.position + closestPoint.Normalize ()*radius;
+
+		Debug.DrawLine (myTransform.position, closestPoint, Color.red);
 
 		MyVector3 AABBCenter = c.myTransform.position + c.localCenter;
 
-		bool overLapX = closestPoint.x > AABBCenter.x - c.size.x && closestPoint.x < AABBCenter.x + c.size.x;
-		bool overLapY = closestPoint.y > AABBCenter.y - c.size.y && closestPoint.y < AABBCenter.y + c.size.y;
-		bool overLapZ = closestPoint.z > AABBCenter.z - c.size.z && closestPoint.z < AABBCenter.z + c.size.z;
+		bool overLapX = closestPoint.x > AABBCenter.x - c.size.x/2 && closestPoint.x < AABBCenter.x + c.size.x/2;
+		bool overLapY = closestPoint.y > AABBCenter.y - c.size.y/2 && closestPoint.y < AABBCenter.y + c.size.y/2;
+		bool overLapZ = closestPoint.z > AABBCenter.z - c.size.z/2 && closestPoint.z < AABBCenter.z + c.size.z/2;
 
 		if (overLapX && overLapY && overLapZ) {
 			CollisionData cd = new CollisionData();
 
-			cd.contactPoint = (c.localCenter - localCenter) / 2;
+			cd.contactPoint = ((c.myTransform.position + c.localCenter) - (myTransform.position + localCenter)) / 2;
             // NEED CHANGE : detect which cube face normal is colliding
 			cd.n = cd.contactPoint.Normalize();
             return cd;
