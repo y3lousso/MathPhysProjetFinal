@@ -45,8 +45,8 @@ public class Player : MonoBehaviour {
 			MyRigidBody rb = go.AddComponent<MyRigidBody> ();
 			go.AddComponent<MyOBBCollider> ();
 
-			rb.velocity = -go.transform.position * Random.Range (0.5f, 2f);
-			rb.angVelocity = MyVector3.One * Random.Range (-50, 50);
+			rb.velocity = -go.transform.position * Random.Range (0.5f, 0.8f);
+			rb.angVelocity = MyVector3.Zero;
 
 			colEngine._objects.Add (go.transform);
 		}
