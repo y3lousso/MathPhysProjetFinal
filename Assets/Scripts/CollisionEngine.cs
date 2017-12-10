@@ -33,6 +33,9 @@ public class CollisionEngine : MonoBehaviour {
 		CollisionData cd = c1.isColliding (c2);
 
 		if (cd != null) {
+			c1.SendMessage ("OnCollision", SendMessageOptions.DontRequireReceiver);
+			c2.SendMessage ("OnCollision", SendMessageOptions.DontRequireReceiver);
+
 			// Draw contact point for debug
 			Debug.DrawLine ((Vector3)c1.myTransform.position, (Vector3)c1.myTransform.position + (Vector3)cd.n, Color.blue);
 			Debug.DrawLine ((Vector3)c2.myTransform.position, (Vector3)c2.myTransform.position - (Vector3)cd.n, Color.blue);
